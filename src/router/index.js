@@ -24,6 +24,7 @@ const routes = [
 			},
 		],
 	},
+	{ path: "/:CatchAll(.*)*", redirect: "/tabs/tab1" },
 ]
 
 const router = createRouter({

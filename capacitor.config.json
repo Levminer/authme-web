@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "authme-ionic",
+  "appId": "com.levminer.authme",
+  "appName": "Authme",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist",

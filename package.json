@@ -1,8 +1,8 @@
 {
-  "name": "authme-ionic",
-  "version": "0.2.0",
+  "name": "authme",
+  "version": "0.3.0",
   "private": true,
-  "description": "An Ionic project",
+  "description": "Web app for Authme the cross-platform two-factor authentication app.",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

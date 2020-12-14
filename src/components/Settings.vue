@@ -40,8 +40,7 @@ h2 {
 	position: relative;
 	left: 25%;
 	right: 0;
-	top: 50%;
-	transform: translateY(-50%);
+	top: 300px;
 	width: 50%;
 }
 
