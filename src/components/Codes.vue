@@ -10,6 +10,7 @@
 				<h2 id="code">Import your Authme file</h2>
 				<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
 				<input type="file" class="file" id="file" @change="load" accept=".txt" />
+				<ion-input></ion-input>
 			</ion-card-content>
 		</ion-card>
 		<div class="next"></div>
@@ -28,6 +29,8 @@ export default {
 
 		load(event) {
 			const speakeasy = require("@levminer/speakeasy")
+			const ClipboardJS = require("clipboard")
+
 			let data = []
 
 			const go = () => {
@@ -51,8 +54,26 @@ export default {
 								</ion-card-subtitle>
 							</ion-card-header>
 							<ion-card-content>
-								<h2 id="code${i}">Code</h2>
+								<ion-chip>
+									<ion-input value="custom" id="code${i}" readonly></ion-input>
+								</ion-chip>
+								<br />
+								<ion-button shape="round" color="dark" id="copy${i}" data-clipboard-target="#code${i}">Copy</ion-button>
 							</ion-card-content>`
+
+						const cp = new ClipboardJS(`#copy${i}`)
+
+						cp.on("success", (e) => {
+							const button = document.querySelector(`#copy${i}`)
+
+							button.textContent = "Copied"
+
+							setTimeout(() => {
+								button.textContent = "Copy"
+							}, 500)
+
+							e.clearSelection()
+						})
 
 						// set div in html
 						document.querySelector(".next").appendChild(element)
@@ -88,7 +109,7 @@ export default {
 							}
 
 							name.textContent = issuer[i]
-							code.textContent = token
+							code.value = token
 							time.textContent = remaining
 						}, 100)
 
@@ -109,23 +130,12 @@ export default {
 							time.textContent = remaining
 
 							clearInterval(int0)
-						}, 800)
+						}, 500)
 
-						/* 						// copy
-						const el = copy.addEventListener("click", () => {
-							code.select()
-							code.setSelectionRange(0, 9999)
-							document.execCommand("copy")
-							copy.textContent = "Copied"
-							setTimeout(() => {
-								copy.textContent = "Copy code"
-							}, 1000)
-						})
-
-						if (name_state) {
+						/* 						if (name_state) {
 							const grid = document.querySelector(`#grid${i}`)
 							grid.style.height = "310px"
-						} */
+						}  */
 
 						// add one to counter
 						counter++
@@ -228,57 +238,6 @@ export default {
 		},
 	},
 
-	/*
-	mounted() {
-		const speakeasy = require("@levminer/speakeasy")
-
-		let mt = false
-
-		if (mt === false) {
-			const element = document.createElement("div")
-
-			element.innerHTML = `
-		<ion-card>
-			<ion-card-header>
-				<ion-card-title>
-					<h1 id="name1">Name</h1>
-				</ion-card-title>
-				<ion-card-subtitle>
-					<h2 id="time1">Time</h2>
-				</ion-card-subtitle>
-			</ion-card-header>
-			<ion-card-content>
-				<h2 id="code1">Code</h2>
-			</ion-card-content>
-		</ion-card>`
-
-			document.querySelector("#container").appendChild(element)
-
-			let secret = "BVPK3JHAZO5AF6XUYS6AYMB3Y5KDR6R2"
-
-			const token = speakeasy.totp({
-				secret: secret,
-				encoding: "base32",
-			})
-
-			const int1 = setInterval(() => {
-				// generate token
-				const token = speakeasy.totp({
-					secret: secret,
-					encoding: "base32",
-				})
-
-				// time
-				const remaining = 30 - Math.floor((new Date().getTime() / 1000.0) % 30)
-
-				document.querySelector("#code1").textContent = token
-				document.querySelector("#time1").textContent = remaining
-			}, 500)
-
-			mt = true
-		}
-	}, */
-
 	name: "ExploreContainer",
 	props: {
 		name: String,
@@ -293,6 +252,14 @@ h1 {
 
 h2 {
 	font-size: 2rem;
+}
+
+ion-input {
+	background-color: white;
+}
+
+ion-chip {
+	cursor: default;
 }
 
 ion-card {

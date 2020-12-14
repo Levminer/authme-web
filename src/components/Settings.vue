@@ -7,11 +7,11 @@
 					<h1 id="name">Settings</h1>
 				</ion-card-title>
 				<ion-card-subtitle>
-					<h2 id="time">Time</h2>
+					<h2 id="time">Version</h2>
 				</ion-card-subtitle>
 			</ion-card-header>
 			<ion-card-content>
-				<h2 id="code">Code</h2>
+				<h2 id="code">0.2.0</h2>
 			</ion-card-content>
 		</ion-card>
 	</div>
