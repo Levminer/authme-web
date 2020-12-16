@@ -7,6 +7,11 @@
 					<ion-label>Codes</ion-label>
 				</ion-tab-button>
 
+				<ion-tab-button tab="tab3" href="/tabs/tab3">
+					<ion-icon :icon="helpCircle" />
+					<ion-label>Help</ion-label>
+				</ion-tab-button>
+
 				<ion-tab-button tab="tab2" href="/tabs/tab2">
 					<ion-icon :icon="settings" />
 					<ion-label>Settings</ion-label>
@@ -18,7 +23,7 @@
 
 <script>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from "@ionic/vue"
-import { settings, square, key } from "ionicons/icons"
+import { settings, key, helpCircle } from "ionicons/icons"
 
 export default {
 	name: "Tabs",
@@ -26,8 +31,8 @@ export default {
 	setup() {
 		return {
 			settings,
-			square,
 			key,
+			helpCircle,
 		}
 	},
 }

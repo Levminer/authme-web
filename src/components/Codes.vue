@@ -1,5 +1,5 @@
 <template>
-	<div id="container">
+	<div ion-fixed id="container">
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
@@ -7,10 +7,15 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h2 id="code">Import your Authme file</h2>
-				<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
-				<input type="file" class="file" id="file" @change="load" accept=".txt" />
-				<ion-input></ion-input>
+				<div class="before">
+					<h2 id="code">Import your Authme file</h2>
+					<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
+					<input type="file" class="file" id="file" @change="load" accept=".txt" />
+				</div>
+				<div class="after">
+					<h2>Save config</h2>
+					<ion-button @click="save" class="save" color="dark" shape="round">Save</ion-button>
+				</div>
 			</ion-card-content>
 		</ion-card>
 		<div class="next"></div>
@@ -20,8 +25,149 @@
 <script>
 export default {
 	/* eslint-disable */
+	mounted() {
+		const speakeasy = require("@levminer/speakeasy")
+		const ClipboardJS = require("clipboard")
+
+		try {
+			const name = JSON.parse(localStorage.getItem("name"))
+			const secret = JSON.parse(localStorage.getItem("secret"))
+			const issuer = JSON.parse(localStorage.getItem("issuer"))
+			const type = JSON.parse(localStorage.getItem("type"))
+
+			const go = () => {
+				const generate = () => {
+					// counter
+					let counter = 0
+
+					for (let i = 0; i < name.length; i++) {
+						// create div
+						const element = document.createElement("ion-card")
+
+						element.innerHTML = `
+							<ion-card-header>
+								<ion-card-title>
+									<h1 id="name${i}">Name</h1>
+								</ion-card-title>
+								<ion-card-subtitle>
+									<h2 id="time${i}">Time</h2>
+								</ion-card-subtitle>
+							</ion-card-header>
+							<ion-card-content>
+								<ion-chip>
+									<ion-input value="custom" id="code${i}" readonly></ion-input>
+								</ion-chip>
+								<br />
+								<ion-button shape="round" color="dark" id="copy${i}" data-clipboard-target="#code${i}">Copy</ion-button>
+							</ion-card-content>`
+
+						const cp = new ClipboardJS(`#copy${i}`)
+
+						cp.on("success", (e) => {
+							const button = document.querySelector(`#copy${i}`)
+
+							button.textContent = "Copied"
+
+							setTimeout(() => {
+								button.textContent = "Copy"
+							}, 500)
+
+							e.clearSelection()
+						})
+
+						// set div in html
+						document.querySelector(".next").appendChild(element)
+
+						// elements
+						const name = document.querySelector(`#name${counter}`)
+						const code = document.querySelector(`#code${counter}`)
+						const time = document.querySelector(`#time${counter}`)
+						const text = document.querySelector(`#text${counter}`)
+						const copy = document.querySelector(`#copy${counter}`)
+
+						// add to query
+						const item = issuer[i].toLowerCase().trim()
+
+						/* querry.push(item) */
+
+						// interval0
+						const int0 = setInterval(() => {
+							// generate token
+							const token = speakeasy.totp({
+								secret: secret[i],
+								encoding: "base32",
+							})
+
+							// time
+							const remaining = 30 - Math.floor((new Date().getTime() / 1000.0) % 30)
+
+							// settting elements
+							try {
+								text.textContent = names[i]
+							} catch (error) {
+								console.log(error)
+							}
+
+							name.textContent = issuer[i]
+							code.value = token
+							time.textContent = remaining
+						}, 100)
+
+						// interval1
+						const int1 = setInterval(() => {
+							// generate token
+							const token = speakeasy.totp({
+								secret: secret[i],
+								encoding: "base32",
+							})
+
+							// time
+							const remaining = 30 - Math.floor((new Date().getTime() / 1000.0) % 30)
+
+							// settting elements
+							name.textContent = issuer[i]
+							code.value = token
+							time.textContent = remaining
+
+							clearInterval(int0)
+						}, 500)
+
+						/* 						if (name_state) {
+							const grid = document.querySelector(`#grid${i}`)
+							grid.style.height = "310px"
+						}  */
+
+						// add one to counter
+						counter++
+					}
+				}
+
+				generate()
+			}
+
+			go()
+
+			document.querySelector(".after").style.display = "none"
+		} catch (error) {
+			return console.warn(`Error loading save file: ${error}`)
+		}
+	},
 
 	methods: {
+		save() {
+			const name = JSON.parse(sessionStorage.getItem("name"))
+			const secret = JSON.parse(sessionStorage.getItem("secret"))
+			const issuer = JSON.parse(sessionStorage.getItem("issuer"))
+			const type = JSON.parse(sessionStorage.getItem("type"))
+
+			localStorage.setItem("name", JSON.stringify(name))
+			localStorage.setItem("secret", JSON.stringify(secret))
+			localStorage.setItem("issuer", JSON.stringify(issuer))
+			localStorage.setItem("type", JSON.stringify(type))
+
+			document.querySelector(".after").style.display = "none"
+		},
+
 		input() {
 			//? open input window
 			document.getElementById("file").click()
@@ -37,8 +183,6 @@ export default {
 				const generate = () => {
 					// counter
 					let counter = 0
-
-					document.querySelector("#container").style.top = `200px`
 
 					for (let i = 0; i < name.length; i++) {
 						// create div
@@ -191,6 +335,11 @@ export default {
 				console.log(issuer)
 				console.log(type)
 
+				sessionStorage.setItem("name", JSON.stringify(name))
+				sessionStorage.setItem("secret", JSON.stringify(secret))
+				sessionStorage.setItem("issuer", JSON.stringify(issuer))
+				sessionStorage.setItem("type", JSON.stringify(type))
+
 				go()
 			}
 
@@ -233,6 +382,9 @@ export default {
 			reader.onload = (e) => {
 				loaded_file = e.target.result
 
+				document.querySelector(".before").style.display = "none"
+				document.querySelector(".after").style.display = "block"
+
 				processdata(loaded_file)
 			}
 		},
@@ -246,12 +398,21 @@ export default {
 </script>
 
 <style>
+ion-button {
+	text-transform: none !important;
+	font-size: 1.5rem !important;
+}
+
 h1 {
-	font-size: 3rem;
+	font-size: 4rem !important;
 }
 
 h2 {
-	font-size: 2rem;
+	font-size: 3rem !important;
+}
+
+h3 {
+	font-size: 2rem !important;
 }
 
 ion-input {
@@ -267,8 +428,12 @@ ion-card {
 	margin-bottom: 2rem;
 }
 
-ion-card:last-child {
-	margin-bottom: 15rem;
+.after {
+	display: none;
+}
+
+a {
+	color: black !important;
 }
 
 #container {
@@ -276,19 +441,15 @@ ion-card:last-child {
 	position: relative;
 	left: 25%;
 	right: 0;
-	top: 300px;
+	top: 30vh;
 	width: 50%;
+	height: 95%;
 }
 
 @media only screen and (max-width: 600px) {
 	#container {
-		text-align: center;
-		position: absolute;
-		left: 5%;
-		right: 5%;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 90%;
+		left: 10%;
+		width: 80%;
 	}
 }
 

@@ -14,21 +14,32 @@
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
-					<h1 id="name">Version</h1>
+					<h2 id="name">Clear data</h2>
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h2 id="code">0.4.0</h2>
+				<h3 id="code">Clear all app data including settings and saved files</h3>
+				<ion-button @click="clear" class="clear" color="dark" shape="round">Clear data</ion-button>
 			</ion-card-content>
 		</ion-card>
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
-					<h1 id="name">Status</h1>
+					<h2 id="name">Version</h2>
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h2 id="state">All systems online</h2>
+				<h3 id="code">0.5.0</h3>
+			</ion-card-content>
+		</ion-card>
+		<ion-card>
+			<ion-card-header>
+				<ion-card-title>
+					<h2 id="name">Status</h2>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+				<h3 id="state">All systems online</h3>
 				<ion-button class="import" color="dark" shape="round"> <a href="https://status.levminer.com" target="_blank">Status</a></ion-button>
 			</ion-card-content>
 		</ion-card>
@@ -39,6 +50,24 @@
 /* eslint-disable */
 
 export default {
+	methods: {
+		clear() {
+			let button = document.querySelector(".clear")
+			let button_text = document.querySelector(".clear").textContent
+
+			if (button_text === "Clear data") {
+				button.textContent = "Confirm"
+			} else {
+				button.textContent = "Reloading"
+
+				localStorage.clear()
+				sessionStorage.clear()
+
+				location.replace("/")
+			}
+		},
+	},
+
 	created() {
 		const fetch = require("node-fetch")
 
@@ -75,57 +104,4 @@ export default {
 }
 </script>
 
-<style scoped>
-#state {
-	color: green;
-}
-
-a {
-	color: #000;
-}
-
-h1 {
-	font-size: 3rem;
-}
-
-h2 {
-	font-size: 2rem;
-}
-
-#container {
-	text-align: center;
-	position: relative;
-	left: 25%;
-	right: 0;
-	top: 100px;
-	width: 50%;
-}
-
-@media only screen and (max-width: 600px) {
-	#container {
-		text-align: center;
-		position: relative;
-		left: 5%;
-		right: 5%;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 90%;
-	}
-}
-
-#container strong {
-	font-size: 20px;
-	line-height: 26px;
-}
-
-#container p {
-	font-size: 16px;
-	line-height: 22px;
-	color: #8c8c8c;
-	margin: 0;
-}
-
-#container a {
-	text-decoration: none;
-}
-</style>
+<style></style>
