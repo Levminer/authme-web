@@ -140,6 +140,14 @@ export default {
 						// add one to counter
 						counter++
 					}
+
+					let container = document.querySelector("#container")
+					let margin = name.length * 325
+
+					document.querySelector(".before").style.display = "none"
+					document.querySelector(".after").style.display = "block"
+
+					container.style.marginBottom = `${margin}px`
 				}
 
 				generate()
@@ -286,6 +294,11 @@ export default {
 					}
 				}
 
+				let container = document.querySelector("#container")
+				let margin = name.length * 325
+
+				container.style.marginBottom = `${margin}px`
+
 				generate()
 			}
 
@@ -401,6 +414,7 @@ export default {
 ion-button {
 	text-transform: none !important;
 	font-size: 1.5rem !important;
+	width: 150px !important;
 }
 
 h1 {
@@ -416,11 +430,13 @@ h3 {
 }
 
 ion-input {
+	font-size: 1.5rem !important;
 	background-color: white;
 }
 
 ion-chip {
 	cursor: default;
+	width: 150px;
 }
 
 ion-card {
@@ -450,6 +466,26 @@ a {
 	#container {
 		left: 10%;
 		width: 80%;
+	}
+
+	h1 {
+		font-size: 3.25rem !important;
+	}
+
+	h2 {
+		font-size: 2.25rem !important;
+	}
+
+	h3 {
+		font-size: 1.5rem !important;
+	}
+
+	ion-button {
+		font-size: 1rem !important;
+	}
+
+	ion-input {
+		font-size: 1.25rem !important;
 	}
 }
 

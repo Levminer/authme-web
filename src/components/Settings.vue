@@ -29,7 +29,7 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3 id="code">0.5.0</h3>
+				<h3 id="code">0.6.0</h3>
 			</ion-card-content>
 		</ion-card>
 		<ion-card>
@@ -104,4 +104,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+#container{
+	margin-bottom: 550px;
+}
+</style>
