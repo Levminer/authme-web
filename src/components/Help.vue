@@ -18,13 +18,25 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3 id="code">
-					Download Authme on your desktop and follow the instructions. If you are already an Authme user just go to: Top menu > Export.
-					After that just click Export and than click Save file. Transfer the file to your phone and then just import it.
-				</h3>
-				<ion-button class="clear" color="dark" shape="round"
-					><a href="https://github.com/Levminer/authme" target="_blank">Download</a></ion-button
-				>
+				<details class="details1">
+					<summary class="summary1">I'm new to Authme</summary>
+
+					<p>Download Authme on your desktop and follow the instructions.</p>
+
+					<br />
+
+					<ion-button class="clear" color="dark" shape="round">
+						<a href="https://github.com/Levminer/authme/releases/latest" target="_blank">Download</a>
+					</ion-button>
+				</details>
+
+				<details class="details1">
+					<summary class="summary1">I'm already using Authme</summary>
+
+					<p>
+						Go to: Top menu > Export. Click Export and than click Save file. After that just import the file you saved.
+					</p>
+				</details>
 			</ion-card-content>
 		</ion-card>
 	</div>
@@ -47,9 +59,25 @@ export default {
 	margin-bottom: 200px;
 }
 
+.details1 {
+	width: 100%;
+	background: #1e1e1e;
+}
+
+.summary1 {
+	color: white;
+	font-weight: bolder;
+	text-decoration: underline;
+	background: #1e1e1e;
+}
+
+p {
+	font-size: 20px !important;
+}
+
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 300px;
+		margin-bottom: 350px;
 	}
 }
 </style>

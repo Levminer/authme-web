@@ -16,6 +16,12 @@
 					<h2>Save config</h2>
 					<ion-button @click="save" class="save" color="dark" shape="round">Save</ion-button>
 				</div>
+				<div class="search">
+					<h2>Search</h2>
+					<ion-chip class="searchbar">
+						<ion-input id="search" @keydown="search" @keyup="search" placeholder="Search for names..."></ion-input>
+					</ion-chip>
+				</div>
 			</ion-card-content>
 		</ion-card>
 		<div class="next"></div>
@@ -23,8 +29,8 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
-	/* eslint-disable */
 	mounted() {
 		const speakeasy = require("@levminer/speakeasy")
 		const ClipboardJS = require("clipboard")
@@ -43,6 +49,8 @@ export default {
 					for (let i = 0; i < name.length; i++) {
 						// create div
 						const element = document.createElement("ion-card")
+
+						element.setAttribute("id", `card${i}`)
 
 						element.innerHTML = `
 							<ion-card-header>
@@ -145,12 +153,15 @@ export default {
 					let margin = name.length * 325
 
 					document.querySelector(".before").style.display = "none"
-					document.querySelector(".after").style.display = "block"
+					document.querySelector(".after").style.display = "none"
+					document.querySelector(".search").style.display = "block"
 
 					container.style.marginBottom = `${margin}px`
 				}
 
 				generate()
+
+				sessionStorage.setItem("querry", JSON.stringify(querry))
 			}
 
 			go()
@@ -161,7 +172,33 @@ export default {
 		}
 	},
 
+	//? METHODS
 	methods: {
+		search(event) {
+			const querry = JSON.parse(sessionStorage.getItem("querry"))
+
+			let search = document.querySelector("#search")
+			let input = search.value.toLowerCase()
+
+			let i = 0
+
+			for (let i = 0; i < querry.length; i++) {
+				const div = document.querySelector(`#card${[i]}`)
+				div.style.display = "block"
+			}
+
+			// search
+			querry.forEach((e) => {
+				if (e.startsWith(input)) {
+					console.log("found")
+				} else {
+					const card = document.querySelector(`#card${[i]}`)
+					card.style.display = "none"
+				}
+				i++
+			})
+		},
+
 		save() {
 			const name = JSON.parse(sessionStorage.getItem("name"))
 			const secret = JSON.parse(sessionStorage.getItem("secret"))
@@ -195,6 +232,8 @@ export default {
 					for (let i = 0; i < name.length; i++) {
 						// create div
 						const element = document.createElement("ion-card")
+
+						element.setAttribute("id", `card${i}`)
 
 						element.innerHTML = `
 							<ion-card-header>
@@ -240,7 +279,7 @@ export default {
 						// add to query
 						const item = issuer[i].toLowerCase().trim()
 
-						/* querry.push(item) */
+						querry.push(item)
 
 						// interval0
 						const int0 = setInterval(() => {
@@ -294,12 +333,16 @@ export default {
 					}
 				}
 
+				document.querySelector(".search").style.display = "block"
+
 				let container = document.querySelector("#container")
 				let margin = name.length * 325
 
 				container.style.marginBottom = `${margin}px`
 
 				generate()
+
+				sessionStorage.setItem("querry", JSON.stringify(querry))
 			}
 
 			// ? read file from settings folder
@@ -307,6 +350,7 @@ export default {
 			const secret = []
 			const issuer = []
 			const type = []
+			const querry = []
 
 			// ? separete value
 			const separation = () => {
@@ -411,98 +455,27 @@ export default {
 </script>
 
 <style>
-ion-button {
-	text-transform: none !important;
-	font-size: 1.5rem !important;
-	width: 150px !important;
-}
-
-h1 {
-	font-size: 4rem !important;
-}
-
-h2 {
-	font-size: 3rem !important;
-}
-
-h3 {
-	font-size: 2rem !important;
-}
-
-ion-input {
-	font-size: 1.5rem !important;
-	background-color: white;
-}
-
-ion-chip {
+.searchbar {
 	cursor: default;
-	width: 150px;
-}
-
-ion-card {
-	border-radius: 25px;
-	margin-bottom: 2rem;
+	width: 300px;
+	background: white;
+	color: black;
+	height: 40px;
+	border-radius: 50px;
 }
 
 .after {
 	display: none;
 }
 
-a {
-	color: black !important;
-}
-
-#container {
-	text-align: center;
-	position: relative;
-	left: 25%;
-	right: 0;
-	top: 30vh;
-	width: 50%;
-	height: 95%;
+.search {
+	display: none;
 }
 
 @media only screen and (max-width: 600px) {
-	#container {
-		left: 10%;
-		width: 80%;
+	.searchbar {
+		width: 250px !important;
 	}
-
-	h1 {
-		font-size: 3.25rem !important;
-	}
-
-	h2 {
-		font-size: 2.25rem !important;
-	}
-
-	h3 {
-		font-size: 1.5rem !important;
-	}
-
-	ion-button {
-		font-size: 1rem !important;
-	}
-
-	ion-input {
-		font-size: 1.25rem !important;
-	}
-}
-
-#container strong {
-	font-size: 20px;
-	line-height: 26px;
-}
-
-#container p {
-	font-size: 16px;
-	line-height: 22px;
-	color: #8c8c8c;
-	margin: 0;
-}
-
-#container a {
-	text-decoration: none;
 }
 
 input {

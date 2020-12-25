@@ -19,17 +19,10 @@
 			</ion-card-header>
 			<ion-card-content>
 				<h3 id="code">Clear all app data including settings and saved files</h3>
+
+				<br />
+
 				<ion-button @click="clear" class="clear" color="dark" shape="round">Clear data</ion-button>
-			</ion-card-content>
-		</ion-card>
-		<ion-card>
-			<ion-card-header>
-				<ion-card-title>
-					<h2 id="name">Version</h2>
-				</ion-card-title>
-			</ion-card-header>
-			<ion-card-content>
-				<h3 id="code">0.6.0</h3>
 			</ion-card-content>
 		</ion-card>
 		<ion-card>
@@ -40,7 +33,20 @@
 			</ion-card-header>
 			<ion-card-content>
 				<h3 id="state">All systems online</h3>
+
+				<br />
+
 				<ion-button class="import" color="dark" shape="round"> <a href="https://status.levminer.com" target="_blank">Status</a></ion-button>
+			</ion-card-content>
+		</ion-card>
+		<ion-card>
+			<ion-card-header>
+				<ion-card-title>
+					<h2 id="name">Version</h2>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+				<h3 id="code">0.7.0</h3>
 			</ion-card-content>
 		</ion-card>
 	</div>
@@ -57,7 +63,7 @@ export default {
 
 			if (button_text === "Clear data") {
 				button.textContent = "Confirm"
-			} else {
+			} else if (button_text === "Confirm") {
 				button.textContent = "Reloading"
 
 				localStorage.clear()
@@ -80,10 +86,9 @@ export default {
 							let state = document.querySelector("#state")
 
 							if (data.state === "up") {
-								state.style.color = "green"
+								state.textContent = "All systems online"
 							} else {
 								state.textContent = "Some systems offline"
-								state.style.color = "red"
 							}
 						} catch (error) {
 							return console.log(error)
@@ -91,7 +96,6 @@ export default {
 					})
 			} catch (error) {
 				state.textContent = "Can't connect to API"
-				state.style.color = "red"
 			}
 		}
 
@@ -105,7 +109,7 @@ export default {
 </script>
 
 <style scoped>
-#container{
-	margin-bottom: 550px;
+#container {
+	margin-bottom: 600px;
 }
 </style>

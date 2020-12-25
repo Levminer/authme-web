@@ -1,10 +1,10 @@
-# Authme WEb
+# Authme Web
 
 -   Web app for Authme the cross-platform two-factor authentication app.
 
 ## Usage
 
-* To use the web app you need to export your codes from: [Authme](https://github.com/Levminer/authme)
+-   To use the web app you need to export your codes from: [Authme](https://github.com/Levminer/authme)
 
 ## Development
 
