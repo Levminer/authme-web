@@ -161,7 +161,7 @@ export default {
 
 				generate()
 
-				sessionStorage.setItem("querry", JSON.stringify(querry))
+				localStorage.setItem("querry", JSON.stringify(querry))
 			}
 
 			go()
@@ -175,7 +175,7 @@ export default {
 	//? METHODS
 	methods: {
 		search(event) {
-			const querry = JSON.parse(sessionStorage.getItem("querry"))
+			const querry = JSON.parse(localStorage.getItem("querry"))
 
 			let search = document.querySelector("#search")
 			let input = search.value.toLowerCase()
@@ -342,7 +342,7 @@ export default {
 
 				generate()
 
-				sessionStorage.setItem("querry", JSON.stringify(querry))
+				localStorage.setItem("querry", JSON.stringify(querry))
 			}
 
 			// ? read file from settings folder

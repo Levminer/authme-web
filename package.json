@@ -1,6 +1,6 @@
 {
 	"name": "authme",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"private": true,
 	"description": "Web app for Authme the cross-platform two-factor authentication app.",
 	"scripts": {
@@ -14,7 +14,8 @@
 		"@capacitor/core": "2.4.4",
 		"@ionic/vue": "^5.4.0",
 		"@ionic/vue-router": "^5.4.0",
-		"@levminer/speakeasy": "^1.0.5",
+		"@levminer/speakeasy": "^1.0.7",
+		"bcryptjs": "^2.4.3",
 		"clipboard": "^2.0.6",
 		"core-js": "^3.6.5",
 		"node-fetch": "^2.6.1",

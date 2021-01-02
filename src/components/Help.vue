@@ -3,18 +3,18 @@
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
-					<h1 id="name">Authme</h1>
+					<h1>Authme</h1>
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h2 id="code">Help</h2>
+				<h2>Help</h2>
 			</ion-card-content>
 		</ion-card>
 
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
-					<h2 id="name">How to import</h2>
+					<h2>How to import</h2>
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
@@ -39,6 +39,22 @@
 				</details>
 			</ion-card-content>
 		</ion-card>
+
+		<ion-card>
+			<ion-card-title>
+				<h2>More information</h2>
+			</ion-card-title>
+
+			<ion-card-content>
+				<h3>For more information please read the documentation.</h3>
+
+				<br />
+
+				<ion-button class="clear" color="dark" shape="round">
+					<a href="https://docs.authme.levminer.com" target="_blank">Documentation</a>
+				</ion-button>
+			</ion-card-content>
+		</ion-card>
 	</div>
 </template>
 
@@ -56,7 +72,7 @@ export default {
 
 <style scoped>
 #container {
-	margin-bottom: 200px;
+	margin-bottom: 430px;
 }
 
 .details1 {
@@ -71,13 +87,17 @@ export default {
 	background: #1e1e1e;
 }
 
+ion-button {
+	width: 250px !important;
+}
+
 p {
 	font-size: 20px !important;
 }
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 350px;
+		margin-bottom: 500px;
 	}
 }
 </style>
