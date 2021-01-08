@@ -97,7 +97,7 @@ p {
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 500px;
+		margin-bottom: 650px;
 	}
 }
 </style>

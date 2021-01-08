@@ -42,4 +42,8 @@ export default {
 ion-title {
 	text-align: center;
 }
+
+ion-tab-bar > * {
+	z-index: 99999;
+}
 </style>

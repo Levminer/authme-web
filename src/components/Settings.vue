@@ -33,7 +33,7 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3>0.8.0</h3>
+				<h3>0.9.0</h3>
 			</ion-card-content>
 		</ion-card>
 	</div>
@@ -45,14 +45,8 @@
 export default {
 	methods: {
 		clear() {
-			let button = document.querySelector(".clear")
-			let button_text = document.querySelector(".clear").textContent
-
-			if (button_text === "Clear data") {
-				button.textContent = "Confirm"
-			} else if (button_text === "Confirm") {
-				button.textContent = "Reloading"
-
+			let dialog = confirm("Are you sure? This can not be undone!")
+			if (dialog == true) {
 				localStorage.clear()
 				sessionStorage.clear()
 
