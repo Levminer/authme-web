@@ -9,6 +9,13 @@
 			<ion-card-content>
 				<div class="before">
 					<h2>Please import your Authme file!</h2>
+					<p>More information: <a href="https://docs.authme.levminer.com/#/web" target="_blank">Docs</a></p>
+					<p>
+						For testing:
+						<a href="https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true" target="_blank"
+							>Sample import file</a
+						>
+					</p>
 					<br />
 					<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
 					<input type="file" class="file" id="file" @change="load" accept=".txt" />
@@ -175,7 +182,7 @@ export default {
 					}
 
 					let container = document.querySelector("#container")
-					let margin = name.length * 325
+					let margin = name.length * 330
 
 					document.querySelector(".before").style.display = "none"
 					document.querySelector(".after").style.display = "none"
@@ -467,7 +474,7 @@ export default {
 				document.querySelector(".search").style.display = "block"
 
 				let container = document.querySelector("#container")
-				let margin = name.length * 325
+				let margin = name.length * 330
 
 				container.style.marginBottom = `${margin}px`
 
@@ -585,7 +592,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .confirm {
 	display: none;
 }
@@ -620,5 +627,10 @@ export default {
 
 input {
 	display: none;
+}
+
+a {
+	color: gray !important;
+	text-decoration: underline !important;
 }
 </style>

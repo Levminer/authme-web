@@ -33,7 +33,7 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3>0.9.0</h3>
+				<h3>1.0.0</h3>
 			</ion-card-content>
 		</ion-card>
 	</div>
@@ -64,6 +64,12 @@ export default {
 
 <style scoped>
 #container {
-	margin-bottom: 600px;
+	margin-bottom: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+	#container {
+		margin-bottom: 400px;
+	}
 }
 </style>
