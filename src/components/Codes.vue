@@ -78,6 +78,7 @@ export default {
 		const bcrypt = require("bcryptjs")
 		const SimpleCrypto = require("simple-crypto-js").default
 
+		// ? try to load save
 		try {
 			const go = () => {
 				const generate = () => {
@@ -145,7 +146,7 @@ export default {
 							try {
 								text.textContent = names[i]
 							} catch (error) {
-								console.log(error)
+								console.warn(error)
 							}
 
 							name.textContent = issuer[i]
@@ -201,8 +202,6 @@ export default {
 
 			let password = localStorage.getItem("password")
 
-			console.log(password)
-
 			if (password !== null) {
 				document.querySelector(".before").style.display = "none"
 				document.querySelector(".confirm").style.display = "block"
@@ -212,7 +211,7 @@ export default {
 						let input = document.querySelector("#input0").value
 						let info = document.querySelector("#info")
 
-						const compare = await bcrypt.compare(input, password).then(console.log("Passwords compared!"))
+						const compare = await bcrypt.compare(input, password)
 
 						if (compare === true) {
 							const simpleCrypto = new SimpleCrypto(input)
@@ -236,13 +235,14 @@ export default {
 				document.querySelector(".before").style.display = "none"
 			}
 		} catch (error) {
-			return console.warn(`Error loading save file: ${error}`)
+			return console.error(`Error loading save file: ${error}`)
 		}
 	},
 
 	//? METHODS
 	methods: {
 		search(event) {
+			// ? search
 			const querry = JSON.parse(localStorage.getItem("querry"))
 
 			let search = document.querySelector("#search")
@@ -250,6 +250,7 @@ export default {
 
 			let i = 0
 
+			// get all elements
 			for (let i = 0; i < querry.length; i++) {
 				const div = document.querySelector(`#card${[i]}`)
 				div.style.display = "block"
@@ -258,7 +259,6 @@ export default {
 			// search
 			querry.forEach((e) => {
 				if (e.startsWith(input)) {
-					console.log("found")
 				} else {
 					const card = document.querySelector(`#card${[i]}`)
 					card.style.display = "none"
@@ -268,16 +268,16 @@ export default {
 		},
 
 		save() {
+			// ? save
 			const bcrypt = require("bcryptjs")
 			const SimpleCrypto = require("simple-crypto-js").default
 
 			let go = async () => {
-				const password_salt = await bcrypt.genSalt(10).then(console.log("Salt completed!"))
+				const password_salt = await bcrypt.genSalt(10)
 
 				let input_value = document.querySelector("#input1").value
 
-				const password = await bcrypt.hash(input_value, password_salt).then(console.log("Hash completed!"))
-				console.log(password)
+				const password = await bcrypt.hash(input_value, password_salt)
 
 				let name = JSON.parse(sessionStorage.getItem("name"))
 				let secret = JSON.parse(sessionStorage.getItem("secret"))
@@ -434,7 +434,7 @@ export default {
 							try {
 								text.textContent = names[i]
 							} catch (error) {
-								console.log(error)
+								console.warn(error)
 							}
 
 							name.textContent = issuer[i]
@@ -525,11 +525,6 @@ export default {
 					}
 				}
 
-				console.log(name)
-				console.log(secret)
-				console.log(issuer)
-				console.log(type)
-
 				sessionStorage.setItem("name", JSON.stringify(name))
 				sessionStorage.setItem("secret", JSON.stringify(secret))
 				sessionStorage.setItem("issuer", JSON.stringify(issuer))
@@ -558,17 +553,12 @@ export default {
 					return (i + 1) % 5
 				})
 
-				console.log("Data:")
-				console.log(data.length)
-				console.log(data)
-
 				separation()
 			}
 
 			let loaded_file
 
 			let file = event.target.files[0]
-			console.log(file)
 
 			let reader = new FileReader()
 

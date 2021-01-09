@@ -20,6 +20,6 @@
 
 ## License
 
--   This software is licensed under: [MIT](https://github.com/Levminer/authme-web/blob/main/.github/LICENSE.md)
+-   This software is licensed under: [MIT](https://github.com/Levminer/authme-web/blob/main/LICENSE.md)
 
 -   If you are planning to use this software as a business please contact me at: <authme@levminer.com>
