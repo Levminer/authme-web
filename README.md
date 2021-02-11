@@ -2,6 +2,8 @@
 
 -   Web app for Authme the cross-platform two-factor authentication app: [Open](https://web.authme.levminer.com)
 
+<img src="https://raw.githubusercontent.com/Levminer/authme-web/main/img/screenshot.png?raw=true">
+
 ## Usage
 
 -   To use the web app: You need to export your codes from: [Authme](https://github.com/Levminer/authme)

@@ -1,5 +1,5 @@
 <template>
-	<div ion-fixed id="container">
+	<div id="container">
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
@@ -235,7 +235,7 @@ export default {
 				document.querySelector(".before").style.display = "none"
 			}
 		} catch (error) {
-			return console.error(`Error loading save file: ${error}`)
+			return console.warn(`Error loading save file: ${error}`)
 		}
 	},
 
