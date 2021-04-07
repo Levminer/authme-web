@@ -1,6 +1,6 @@
 {
-	"name": "Authme",
-	"short_name": "Authme",
+	"name": "Authme Web",
+	"short_name": "Authme Web",
 	"icons": [
 		{
 			"src": "assets/pwa/android-chrome-192x192.png",

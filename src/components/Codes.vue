@@ -28,9 +28,16 @@
 					<h4 id="info">Press enter to confirm!</h4>
 				</div>
 				<div class="search">
-					<ion-chip class="input">
-						<ion-input id="search" @keydown="search" @keyup="search" placeholder="Search for names..."></ion-input>
-					</ion-chip>
+					<input
+						type="text"
+						class="input1"
+						id="search"
+						@keydown="search"
+						@keyup="search"
+						placeholder="Search for names..."
+						autocomplete="off"
+						autofocus
+					/>
 				</div>
 			</ion-card-content>
 		</ion-card>
@@ -105,7 +112,7 @@ export default {
 									<ion-input value="custom" id="code${i}" readonly></ion-input>
 								</ion-chip>
 								<br />
-								<ion-button shape="round" color="dark" id="copy${i}" data-clipboard-target="#code${i}">Copy code</ion-button>
+								<ion-button shape="round" color="dark" id="copy${i}" data-clipboard-target="#code${i}">Copy</ion-button>
 							</ion-card-content>`
 
 						// set div in html
@@ -121,7 +128,7 @@ export default {
 							copybtn.textContent = "Copied"
 
 							setTimeout(() => {
-								copybtn.textContent = "Copy code"
+								copybtn.textContent = "Copy"
 							}, 1000)
 						})
 
@@ -190,6 +197,8 @@ export default {
 					document.querySelector(".search").style.display = "block"
 
 					container.style.marginBottom = `${margin}px`
+
+					document.querySelector("#search").focus()
 				}
 
 				generate()
@@ -387,7 +396,7 @@ export default {
 									<ion-input value="custom" id="code${i}" readonly></ion-input>
 								</ion-chip>
 								<br />
-								<ion-button shape="round" color="dark" id="copy${i}">Copy code</ion-button>
+								<ion-button shape="round" color="dark" id="copy${i}">Copy</ion-button>
 							</ion-card-content>`
 
 						// set div in html
@@ -403,7 +412,7 @@ export default {
 							copybtn.textContent = "Copied"
 
 							setTimeout(() => {
-								copybtn.textContent = "Copy code"
+								copybtn.textContent = "Copy"
 							}, 1000)
 						})
 
@@ -587,14 +596,35 @@ export default {
 	display: none;
 }
 
-.input {
-	cursor: default;
+.input1 {
+	border: 1px solid white;
 	width: 300px;
 	background: white;
 	color: black;
 	height: 40px;
 	border-radius: 50px;
 	margin-top: 30px;
+	transition: 0.2s ease-in;
+	font-size: 1.5rem;
+}
+
+.input1::placeholder {
+	color: black;
+	transition: 0.2s ease-in;
+}
+
+.input:hover {
+	color: black;
+	transition: 0.2s ease-in;
+}
+
+.input1:focus::placeholder {
+	color: transparent;
+	transition: 0.2s ease-in;
+}
+.input1:hover::placeholder {
+	color: transparent;
+	transition: 0.2s ease-in;
 }
 
 .set {
@@ -615,7 +645,7 @@ export default {
 	}
 }
 
-input {
+input[type="file"] {
 	display: none;
 }
 
