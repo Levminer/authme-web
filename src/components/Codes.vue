@@ -608,6 +608,13 @@ export default {
 	font-size: 1.5rem;
 }
 
+@media only screen and (max-width: 768px) {
+	.input1 {
+		width: 200px;
+		font-size: 1rem;
+	}
+}
+
 .input1::placeholder {
 	color: black;
 	transition: 0.2s ease-in;
