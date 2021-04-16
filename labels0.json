@@ -1,0 +1,15 @@
+[
+    { "name": "Type: Bug", "color": "#ff0000" },
+    { "name": "Type: Question", "color": "#a200ff" },
+    { "name": "Type: Duplicate", "color": "#4a464d" },
+    { "name": "Type: Feature", "color": "#00ff48" },
+    { "name": "Type: Wontfix", "color": "#000000" },
+    { "name": "Type: Docs", "color": "#0004ff" },
+    { "name": "Type: Improvement", "color": "#ffee00" },
+    { "name": "Type: Invalid", "color": "#ff00ff" },
+    { "name": "Status: Abandoned", "color": "#6e2121" },
+    { "name": "Status: In Progress", "color": "#234a28" },
+    { "name": "Status: On Hold", "color": "#c2c219" },
+    { "name": "Status: To Do", "color": "#541515" },
+    { "name": "Status: Done", "color": "#267828" }
+]

@@ -26,6 +26,10 @@ const routes = [
 				path: "tab3",
 				component: () => import("@/views/Tab3.vue"),
 			},
+			{
+				path: "tab4",
+				component: () => import("@/views/Tab4.vue"),
+			},
 		],
 	},
 	{ path: "/:CatchAll(.*)*", redirect: "/tabs/tab1" },
