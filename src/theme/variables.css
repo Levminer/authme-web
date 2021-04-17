@@ -110,6 +110,10 @@ ion-button {
 	width: 150px !important;
 }
 
+ion-segment-button {
+	text-transform: none !important;
+}
+
 h1 {
 	font-size: 4rem !important;
 }
@@ -152,10 +156,24 @@ a {
 	height: 95%;
 }
 
+ion-alert {
+	--ion-backdrop-opacity: 90%;
+	--width: 30% !important;
+	--max-width: 100% !important;
+}
+
+ion-alert button {
+	text-transform: none !important;
+}
+
 @media only screen and (max-width: 600px) {
 	#container {
 		left: 10%;
 		width: 80%;
+	}
+
+	ion-alert {
+		--width: 75% !important;
 	}
 
 	h1 {

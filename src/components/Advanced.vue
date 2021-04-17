@@ -17,7 +17,15 @@
 					</ion-card-title>
 				</ion-card-header>
 				<ion-card-content>
-					<input type="file" accept="image/jpeg, image/png" name="image" id="file" @change="loadFile($event)" multiple />
+					<h3>You can import from stand alone QR codes here.</h3>
+
+					<ion-button @click="upload()" class="upload" color="dark" shape="round">Upload QR code(s)</ion-button>
+					<input type="file" accept="image/jpeg, image/png" name="image" id="upload" @change="loadFile($event)" multiple />
+					<br />
+					<br />
+					<h3>If you failed the process restart here.</h3>
+
+					<ion-button @click="reload()" class="restart" color="dark" shape="round">Restart</ion-button>
 				</ion-card-content>
 			</ion-card>
 
@@ -35,8 +43,17 @@
 
 <script>
 /* eslint-disable */
+import { alertController } from "@ionic/vue"
 export default {
 	methods: {
+		upload() {
+			document.getElementById("upload").click()
+		},
+
+		reload() {
+			location.reload()
+		},
+
 		segmentChanged(ev) {
 			let event = ev.detail.value
 
@@ -65,6 +82,8 @@ export default {
 			const secrets = []
 			const issuers = []
 
+			const button = document.querySelector(".upload")
+
 			for (let i = 0; i < arr.length; i++) {
 				let element = arr[i]
 
@@ -77,8 +96,12 @@ export default {
 					qr.decodeFromImage(image).then((res) => {
 						if (res === false) {
 							// no qr code
-							alert(`No QR code found on the picture: ${element.name}. \nTry to take a better picture and try again!`)
+							this.failedAlert(element.name)
+
+							button.textContent = "Processing failed"
 						} else {
+							button.textContent = "Processing completed"
+
 							// construct
 
 							let url = res.data.replaceAll(/\s/g, "")
@@ -104,23 +127,25 @@ export default {
 							issuers.push(issuer)
 
 							if (arr.length === i + 1) {
-								console.error("HALO")
-
 								console.log(names)
 								console.log(secrets)
 								console.log(issuers)
 
-								let str = ""
+								this.downloadAlert()
 
-								for (let j = 0; j < names.length; j++) {
-									let substr = `\nName: ${names[j]} \nSecret: ${secrets[j]} \nIssuer: ${issuers[j]} \nType:   OTP_TOTP\n`
+								setTimeout(() => {
+									let str = ""
 
-									str += substr
-								}
+									for (let j = 0; j < names.length; j++) {
+										let substr = `\nName: ${names[j]} \nSecret: ${secrets[j]} \nIssuer: ${issuers[j]} \nType:   OTP_TOTP\n`
 
-								const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
+										str += substr
+									}
 
-								FileSaver.saveAs(blob, "authme_web_import.txt")
+									const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
+
+									FileSaver.saveAs(blob, "authme_web_import.txt")
+								}, 500)
 							}
 						}
 					})
@@ -128,6 +153,40 @@ export default {
 
 				process_images()
 			}
+		},
+		async downloadAlert() {
+			const alert = await alertController.create({
+				header: "Authme Web",
+				message: `QR code(s) processed sucesfully! <br><br> A download window will open shortly! <br><br>You can import your codes now on the codes tab!`,
+				backdropDismiss: false,
+				buttons: [
+					{
+						text: "Close",
+						role: "cancel",
+						handler: () => {
+							console.log("Alert closed")
+						},
+					},
+				],
+			})
+			return alert.present()
+		},
+		async failedAlert(name) {
+			const alert = await alertController.create({
+				header: "Authme Web",
+				message: `No QR code found on the picture: ${name} <br><br> Try to take a better picture and try again! <br><br> You can restart with the restart button!`,
+				backdropDismiss: false,
+				buttons: [
+					{
+						text: "Close",
+						role: "cancel",
+						handler: () => {
+							console.log("Alert closed")
+						},
+					},
+				],
+			})
+			return alert.present()
 		},
 	},
 }
@@ -145,5 +204,31 @@ export default {
 	border-radius: 25px;
 	width: 50%;
 	margin: 0 auto;
+}
+
+input[type="file"] {
+	display: none;
+}
+
+.upload {
+	width: 300px !important;
+}
+
+.restart {
+	width: 150px !important;
+}
+
+@media only screen and (max-width: 600px) {
+	#select {
+		width: 75%;
+	}
+
+	.upload {
+		width: 200px !important;
+	}
+
+	.restart {
+		width: 100px !important;
+	}
 }
 </style>
