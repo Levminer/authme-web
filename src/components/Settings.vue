@@ -41,17 +41,32 @@
 
 <script>
 /* eslint-disable */
+import { alertController } from "@ionic/vue"
 
 export default {
 	methods: {
-		clear() {
-			let dialog = confirm("Are you sure? This can not be undone!")
-			if (dialog == true) {
-				localStorage.clear()
-				sessionStorage.clear()
+		async clear() {
+			const alert = await alertController.create({
+				header: "Authme Web",
+				message: `Are you sure you want to clear all data? <br><br> This can not be undone!`,
+				backdropDismiss: false,
+				buttons: [
+					{
+						text: "Yes",
+						handler: () => {
+							localStorage.clear()
+							sessionStorage.clear()
 
-				location.replace("/")
-			}
+							location.replace("/")
+						},
+					},
+					{
+						text: "No",
+						role: "cancel",
+					},
+				],
+			})
+			return alert.present()
 		},
 	},
 

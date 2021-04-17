@@ -35,7 +35,11 @@
 						<h1>Export</h1>
 					</ion-card-title>
 				</ion-card-header>
-				<ion-card-content> </ion-card-content>
+				<ion-card-content>
+					<h3>You can export your QR codes if you saved them on the codes tab.</h3>
+
+					<ion-button @click="download()" class="download" color="dark" shape="round">Export QR code(s)</ion-button>
+				</ion-card-content>
 			</ion-card>
 		</div>
 	</div>
@@ -44,6 +48,7 @@
 <script>
 /* eslint-disable */
 import { alertController } from "@ionic/vue"
+
 export default {
 	methods: {
 		upload() {
@@ -154,6 +159,166 @@ export default {
 				process_images()
 			}
 		},
+		async download() {
+			let name = JSON.parse(localStorage.getItem("name"))
+			let secret = JSON.parse(localStorage.getItem("secret"))
+			let issuer = JSON.parse(localStorage.getItem("issuer"))
+			let type = JSON.parse(localStorage.getItem("type"))
+
+			if (name === null) {
+				const alert = await alertController.create({
+					header: "Authme Web",
+					message: `Not found saved codes!  <br><br> You can save your codes on the codes tab!`,
+					backdropDismiss: false,
+					buttons: [
+						{
+							text: "Close",
+							role: "cancel",
+							handler: () => {
+								console.log("Alert closed")
+							},
+						},
+					],
+				})
+				alert.present()
+
+				return console.warn(`Authme Web - No saved codes found `)
+			}
+
+			let password = localStorage.getItem("password")
+
+			if (password === null) {
+				this.exportNoPass()
+			} else {
+				this.exportPass()
+			}
+		},
+
+		async exportNoPass() {
+			const alert = await alertController.create({
+				header: "Authme Web",
+				message: `QR code(s) exported sucesfully! <br><br> A download window will open after you closed this! <br><br>You can import the exported codes in Authme and Authme Web!`,
+				backdropDismiss: false,
+				buttons: [
+					{
+						text: "Close",
+						role: "cancel",
+						handler: () => {
+							const FileSaver = require("file-saver")
+
+							let names = JSON.parse(localStorage.getItem("name"))
+							let secrets = JSON.parse(localStorage.getItem("secret"))
+							let issuers = JSON.parse(localStorage.getItem("issuer"))
+
+							let str = ""
+
+							for (let i = 0; i < names.length; i++) {
+								let substr = `\nName: ${names[i]} \nSecret: ${secrets[i]} \nIssuer: ${issuers[i]} \nType:   OTP_TOTP\n`
+
+								str += substr
+							}
+
+							console.log(str)
+
+							const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
+
+							FileSaver.saveAs(blob, "authme_web_export.txt")
+						},
+					},
+				],
+			})
+			return alert.present()
+		},
+
+		async exportPass() {
+			const alert = await alertController.create({
+				header: "Authme Web",
+				message: `Please type in your password!`,
+				backdropDismiss: false,
+				inputs: [
+					{
+						placeholder: "Password",
+						type: "password",
+					},
+				],
+				buttons: [
+					{
+						text: "Confirm",
+						handler: async (alertData) => {
+							const FileSaver = require("file-saver")
+							const SimpleCrypto = require("simple-crypto-js").default
+
+							let names = JSON.parse(localStorage.getItem("name"))
+							let secrets = JSON.parse(localStorage.getItem("secret"))
+							let issuers = JSON.parse(localStorage.getItem("issuer"))
+
+							const simpleCrypto = new SimpleCrypto(alertData[0])
+
+							try {
+								names = simpleCrypto.decrypt(names)
+								secrets = simpleCrypto.decrypt(secrets)
+								issuers = simpleCrypto.decrypt(issuers)
+							} catch (error) {
+								const alert0 = await alertController.create({
+									header: "Authme Web",
+									message: `Wrong password!  <br><br> Please try again!`,
+									backdropDismiss: false,
+									buttons: [
+										{
+											text: "Close",
+											role: "cancel",
+											handler: () => {
+												console.log("Alert closed")
+											},
+										},
+									],
+								})
+								alert0.present()
+
+								return console.warn(`Authme Web - Worong password - ${error}`)
+							}
+
+							const alert1 = await alertController.create({
+								header: "Authme Web",
+								message: `QR code(s) exported sucesfully! <br><br> A download window will open shortly! <br><br>You can import the exported codes in Authme and Authme Web!`,
+								backdropDismiss: false,
+								buttons: [
+									{
+										text: "Close",
+										role: "cancel",
+										handler: () => {
+											console.log("Alert closed")
+										},
+									},
+								],
+							})
+							alert1.present()
+
+							let str = ""
+
+							for (let i = 0; i < names.length; i++) {
+								let substr = `\nName: ${names[i]} \nSecret: ${secrets[i]} \nIssuer: ${issuers[i]} \nType:   OTP_TOTP\n`
+
+								str += substr
+							}
+
+							const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
+
+							FileSaver.saveAs(blob, "authme_web_export.txt")
+						},
+					},
+					{
+						text: "Close",
+						role: "cancel",
+						handler: () => {
+							console.log("Alert closed!")
+						},
+					},
+				],
+			})
+			return alert.present()
+		},
+
 		async downloadAlert() {
 			const alert = await alertController.create({
 				header: "Authme Web",
@@ -171,6 +336,7 @@ export default {
 			})
 			return alert.present()
 		},
+
 		async failedAlert(name) {
 			const alert = await alertController.create({
 				header: "Authme Web",
@@ -218,6 +384,10 @@ input[type="file"] {
 	width: 150px !important;
 }
 
+.download {
+	width: 300px !important;
+}
+
 @media only screen and (max-width: 600px) {
 	#select {
 		width: 75%;
@@ -229,6 +399,10 @@ input[type="file"] {
 
 	.restart {
 		width: 100px !important;
+	}
+
+	.download {
+		width: 200px !important;
 	}
 }
 </style>
