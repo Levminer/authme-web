@@ -156,6 +156,28 @@ a {
 	height: 95%;
 }
 
+ion-tab-bar {
+	z-index: 9999999999 !important;
+}
+
+ion-tabs {
+	z-index: 9999999999 !important;
+}
+
+ion-router-outlet > .ion-page {
+	animation: fadeIn 0.3s 1 forwards;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 5vh, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
 ion-alert {
 	--ion-backdrop-opacity: 90%;
 	--width: 30% !important;

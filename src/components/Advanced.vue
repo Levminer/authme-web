@@ -108,7 +108,6 @@ export default {
 							button.textContent = "Processing completed"
 
 							// construct
-
 							let url = res.data.replaceAll(/\s/g, "")
 							url = url.slice(15)
 							// otpauth://totp/Authme:authme@levminer.com?secret=1234&issuer=Authme
@@ -160,12 +159,10 @@ export default {
 			}
 		},
 		async download() {
-			let name = JSON.parse(localStorage.getItem("name"))
-			let secret = JSON.parse(localStorage.getItem("secret"))
-			let issuer = JSON.parse(localStorage.getItem("issuer"))
-			let type = JSON.parse(localStorage.getItem("type"))
+			let names = JSON.parse(localStorage.getItem("name"))
+			let password = localStorage.getItem("password")
 
-			if (name === null) {
+			if (names === null) {
 				const alert = await alertController.create({
 					header: "Authme Web",
 					message: `Not found saved codes!  <br><br> You can save your codes on the codes tab!`,
@@ -184,8 +181,6 @@ export default {
 
 				return console.warn(`Authme Web - No saved codes found `)
 			}
-
-			let password = localStorage.getItem("password")
 
 			if (password === null) {
 				this.exportNoPass()
@@ -403,6 +398,10 @@ input[type="file"] {
 
 	.download {
 		width: 200px !important;
+	}
+
+	#container {
+		margin-bottom: 200pxpx;
 	}
 }
 </style>
