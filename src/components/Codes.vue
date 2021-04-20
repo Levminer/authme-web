@@ -195,7 +195,7 @@ export default {
 					}
 
 					let container = document.querySelector("#container")
-					let margin = name.length * 330
+					let margin = name.length * 350
 
 					document.querySelector(".before").style.display = "none"
 					document.querySelector(".after").style.display = "none"
@@ -521,7 +521,7 @@ export default {
 				document.querySelector(".search").style.display = "block"
 
 				let container = document.querySelector("#container")
-				let margin = name.length * 330
+				let margin = name.length * 350
 
 				container.style.marginBottom = `${margin}px`
 
@@ -646,7 +646,7 @@ export default {
 	font-size: 1.5rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
 	.input1 {
 		width: 200px;
 		font-size: 1rem;
@@ -654,6 +654,10 @@ export default {
 
 	.input {
 		width: 200px !important;
+	}
+
+	#container {
+		margin-bottom: 500px !important;
 	}
 }
 
