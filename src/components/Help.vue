@@ -111,7 +111,7 @@ p {
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 1200px !important;
+		margin-bottom: 1500px !important;
 	}
 
 	ion-button {

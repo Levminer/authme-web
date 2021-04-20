@@ -8,11 +8,11 @@
 		<ion-content :fullscreen="true">
 			<ion-header collapse="condense">
 				<ion-toolbar>
-					<ion-title size="large">Tab 2</ion-title>
+					<ion-title size="large">Settings</ion-title>
 				</ion-toolbar>
 			</ion-header>
 
-			<Settings name="Tab 2 page" />
+			<Settings />
 		</ion-content>
 	</ion-page>
 </template>

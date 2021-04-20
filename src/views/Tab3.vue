@@ -12,7 +12,7 @@
 				</ion-toolbar>
 			</ion-header>
 
-			<Help name="Tab 3 page" />
+			<Help />
 		</ion-content>
 	</ion-page>
 </template>

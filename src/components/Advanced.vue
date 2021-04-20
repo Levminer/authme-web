@@ -401,7 +401,7 @@ input[type="file"] {
 	}
 
 	#container {
-		margin-bottom: 200pxpx;
+		margin-bottom: 300px;
 	}
 }
 </style>

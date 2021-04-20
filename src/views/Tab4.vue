@@ -12,7 +12,7 @@
 				</ion-toolbar>
 			</ion-header>
 
-			<Advanced name="Tab 4 page" />
+			<Advanced />
 		</ion-content>
 	</ion-page>
 </template>
