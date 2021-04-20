@@ -657,7 +657,7 @@ export default {
 	}
 
 	#container {
-		margin-bottom: 500px !important;
+		margin-bottom: 400px !important;
 	}
 }
 
