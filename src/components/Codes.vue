@@ -195,7 +195,7 @@ export default {
 					}
 
 					let container = document.querySelector("#container")
-					let margin = name.length * 350
+					let margin = name.length * 400
 
 					document.querySelector(".before").style.display = "none"
 					document.querySelector(".after").style.display = "none"
@@ -521,7 +521,7 @@ export default {
 				document.querySelector(".search").style.display = "block"
 
 				let container = document.querySelector("#container")
-				let margin = name.length * 350
+				let margin = name.length * 400
 
 				container.style.marginBottom = `${margin}px`
 
