@@ -31,7 +31,7 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3>1.1.0.dev.3 (2021. April 18.)</h3>
+				<h3>1.1.0.dev.4 (2021. April 20.)</h3>
 			</ion-card-content>
 		</ion-card>
 	</div>

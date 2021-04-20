@@ -10,7 +10,7 @@
 		</ion-segment>
 
 		<div id="container">
-			<ion-card id="import">
+			<ion-card id="import" class="tab">
 				<ion-card-header>
 					<ion-card-title>
 						<h1>Import</h1>
@@ -29,7 +29,7 @@
 				</ion-card-content>
 			</ion-card>
 
-			<ion-card id="export">
+			<ion-card id="export" class="tab">
 				<ion-card-header>
 					<ion-card-title>
 						<h1>Export</h1>
@@ -381,6 +381,19 @@ input[type="file"] {
 
 .download {
 	width: 300px !important;
+}
+
+.tab {
+	animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @media only screen and (max-width: 600px) {
