@@ -104,6 +104,10 @@ http://ionicframework.com/docs/theming/ */
 	--ion-card-background: #1e1e1e;
 }
 
+* {
+	outline: none;
+}
+
 ion-content {
 	animation: fadeInAnimation ease-in 0.3s;
 	animation-iteration-count: 1;
@@ -356,4 +360,39 @@ ion-alert button {
 
 .details2 > :not(summary) {
 	margin-top: 0;
+}
+
+/* inputs */
+.input1:focus::placeholder,
+.input2:focus::placeholder {
+	transition: 0.2s ease-in;
+	color: transparent;
+}
+
+.input1:hover::placeholder,
+.input2:hover::placeholder {
+	transition: 0.2s ease-in;
+	color: transparent;
+}
+
+.input1 {
+	color: var(--df_secondary_color);
+	background: var(--df_primary_color);
+	border: 1px solid var(--df_primary_color);
+	font-size: 1rem;
+	padding: 15px 30px;
+	border-radius: 1.8rem;
+	cursor: text;
+	text-align: center;
+	transition: 0.2s ease-in;
+}
+
+.input1:hover {
+	color: var(--df_primary_color);
+	background-color: var(--df_primary_background);
+	border: 1px solid var(--df_primary_color);
+}
+
+.input1::placeholder {
+	color: var(--df_secondary_color);
 }

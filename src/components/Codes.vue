@@ -16,6 +16,10 @@
 							>Sample import file</a
 						>
 					</p>
+					<p>
+						For the best expreience install this website as a PWA:
+						<a href="https://docs.authme.levminer.com/#/web-install" target="_blank">Install</a>
+					</p>
 					<br />
 					<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
 					<input type="file" class="file" id="file" @change="load" accept=".txt" />
@@ -646,6 +650,10 @@ export default {
 	.input1 {
 		width: 200px;
 		font-size: 1rem;
+	}
+
+	.container {
+		margin-bottom: 200px;
 	}
 }
 

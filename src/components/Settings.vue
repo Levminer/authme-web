@@ -82,7 +82,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 400px;
+		margin-bottom: 500px;
 	}
 }
 </style>
