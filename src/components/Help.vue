@@ -31,7 +31,7 @@
 
 				<details class="details1">
 					<summary class="summary1">In Authme Web</summary>
-					<p>Go to the Advaned tab: Upload your QR code(s), then a download window will appear.</p>
+					<p>Go to the Advanced tab: Upload your QR code(s), then a download window will appear.</p>
 					<br />
 					<p>After that go back to the Codes tab: Upload the file you downloaded.</p>
 				</details>

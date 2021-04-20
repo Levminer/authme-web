@@ -19,9 +19,7 @@
 			</ion-card-header>
 			<ion-card-content>
 				<h3>Clear all app data including settings and saved files.</h3>
-
 				<br />
-
 				<ion-button @click="clear" class="clear" color="dark" shape="round">Clear data</ion-button>
 			</ion-card-content>
 		</ion-card>

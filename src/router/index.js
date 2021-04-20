@@ -4,35 +4,31 @@ import Tabs from "../views/Tabs.vue"
 const routes = [
 	{
 		path: "/",
-		redirect: "/tabs/tab1",
+		redirect: "/codes",
 	},
 	{
-		path: "/tabs/",
+		path: "/",
 		component: Tabs,
 		children: [
 			{
-				path: "",
-				redirect: "/tabs/tab1",
-			},
-			{
-				path: "tab1",
+				path: "codes",
 				component: () => import("@/views/Tab1.vue"),
 			},
 			{
-				path: "tab2",
+				path: "settings",
 				component: () => import("@/views/Tab2.vue"),
 			},
 			{
-				path: "tab3",
+				path: "help",
 				component: () => import("@/views/Tab3.vue"),
 			},
 			{
-				path: "tab4",
+				path: "advanced",
 				component: () => import("@/views/Tab4.vue"),
 			},
 		],
 	},
-	{ path: "/:CatchAll(.*)*", redirect: "/tabs/tab1" },
+	{ path: "/:CatchAll(.*)*", redirect: "/codes" },
 ]
 
 const router = createRouter({

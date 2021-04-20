@@ -12,7 +12,7 @@
 				</ion-toolbar>
 			</ion-header>
 
-			<Codes name="Tab 1 page" />
+			<Codes />
 		</ion-content>
 	</ion-page>
 </template>
