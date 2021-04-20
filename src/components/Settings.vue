@@ -27,11 +27,30 @@
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
+					<h2 id="name">Licenses</h2>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+				<h3>View all used open source licenses.</h3>
+				<br />
+				<ion-button class="clear" color="dark" shape="round"
+					><a target="_blank" href="https://authme.levminer.com/licenses.html">View licenses</a></ion-button
+				>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card>
+			<ion-card-header>
+				<ion-card-title>
 					<h2 id="name">Version</h2>
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3>1.1.0.dev.4 (2021. April 20.)</h3>
+				<h3>1.1.0 (2021. April 28.)</h3>
+				<br />
+				<ion-button class="clear" color="dark" shape="round"
+					><a target="_blank" href="https://github.com/levminer/authme-web/releases">Release notes</a></ion-button
+				>
 			</ion-card-content>
 		</ion-card>
 	</div>
@@ -77,12 +96,20 @@ export default {
 
 <style scoped>
 #container {
-	margin-bottom: 400px !important;
+	margin-bottom: 800px !important;
+}
+
+.clear {
+	width: 200px !important;
 }
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 650px !important;
+		margin-bottom: 850px !important;
+	}
+
+	.clear {
+		width: 150px !important;
 	}
 }
 </style>

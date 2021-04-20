@@ -102,6 +102,7 @@ export default {
 						const element = document.createElement("ion-card")
 
 						element.setAttribute("id", `card${i}`)
+						element.setAttribute("class", `card`)
 
 						element.innerHTML = `
 							<ion-card-header>
@@ -207,6 +208,11 @@ export default {
 				}
 
 				generate()
+
+				let someElementsItems = document.querySelectorAll(".card")
+				let el = someElementsItems[someElementsItems.length - 1]
+				console.log(el)
+				el.style.margin = "200px !important"
 			}
 
 			let name = JSON.parse(localStorage.getItem("name"))

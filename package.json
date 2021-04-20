@@ -1,8 +1,9 @@
 {
-	"name": "authme-web",
 	"version": "1.1.0",
-	"private": true,
+	"name": "authme-web",
 	"description": "Web app for Authme the cross-platform two-factor authentication app.",
+	"author": "Levminer",
+	"license": "GPL-3.0",
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "vue-cli-service build",
@@ -19,7 +20,6 @@
 		"clipboard-polyfill": "^3.0.3",
 		"core-js": "^3.6.5",
 		"file-saver": "^2.0.5",
-		"qrcode": "^1.4.4",
 		"qrcode-decoder": "^0.1.2",
 		"register-service-worker": "^1.7.1",
 		"simple-crypto-js": "^3.0.0",
