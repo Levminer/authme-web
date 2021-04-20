@@ -652,8 +652,8 @@ export default {
 		font-size: 1rem;
 	}
 
-	.container {
-		margin-bottom: 200px;
+	.input {
+		width: 200px !important;
 	}
 }
 
@@ -686,12 +686,6 @@ export default {
 
 .search {
 	display: none;
-}
-
-@media only screen and (max-width: 600px) {
-	.input {
-		width: 200px !important;
-	}
 }
 
 input[type="file"] {

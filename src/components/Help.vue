@@ -86,7 +86,7 @@ export default {
 
 <style scoped>
 #container {
-	margin-bottom: 650px;
+	margin-bottom: 850px !important;
 }
 
 .details1 {

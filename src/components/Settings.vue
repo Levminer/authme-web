@@ -77,12 +77,12 @@ export default {
 
 <style scoped>
 #container {
-	margin-bottom: 0px;
+	margin-bottom: 400px !important;
 }
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 500px;
+		margin-bottom: 500px !important;
 	}
 }
 </style>
