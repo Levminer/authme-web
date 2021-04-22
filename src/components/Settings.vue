@@ -46,7 +46,7 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3>1.1.0 (2021. April 28.)</h3>
+				<h3>1.1.0 (2021. April 27.)</h3>
 				<br />
 				<ion-button class="clear" color="dark" shape="round"
 					><a target="_blank" href="https://github.com/levminer/authme-web/releases">Release notes</a></ion-button
@@ -70,11 +70,28 @@ export default {
 				buttons: [
 					{
 						text: "Yes",
-						handler: () => {
-							localStorage.clear()
-							sessionStorage.clear()
+						handler: async () => {
+							const alert = await alertController.create({
+								header: "Authme Web",
+								message: `Are you absolutely sure? <br><br> There is no way back!`,
+								backdropDismiss: false,
+								buttons: [
+									{
+										text: "Yes",
+										handler: () => {
+											localStorage.clear()
+											sessionStorage.clear()
 
-							location.replace("/")
+											location.replace("/")
+										},
+									},
+									{
+										text: "No",
+										role: "cancel",
+									},
+								],
+							})
+							return alert.present()
 						},
 					},
 					{

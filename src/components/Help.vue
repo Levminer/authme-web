@@ -24,8 +24,8 @@
 					<p>Download Authme on your desktop and follow the instructions.</p>
 					<br />
 					<p>
-						After you done go to: Top menu > Advanced > Export. Click Export and than click Save file. After that just import the file you
-						saved.
+						After you done go to: Top menu > Advanced > Export. Click Export and than click Save as .txt file. After that just import the
+						file you saved.
 					</p>
 				</details>
 

@@ -20,12 +20,7 @@
 					<h3>You can import from QR code(s) here.</h3>
 
 					<ion-button @click="upload()" class="upload" color="dark" shape="round">Upload QR code(s)</ion-button>
-					<input type="file" accept="image/jpeg, image/png" name="image" id="upload" @change="loadFile($event)" multiple />
-					<br />
-					<br />
-					<h3>If you failed the process restart here.</h3>
-
-					<ion-button @click="reload()" class="restart" color="dark" shape="round">Restart</ion-button>
+					<input type="file" accept=".jpg, .jpeg, .png, .bmp" name="image" id="upload" @change="loadFile($event)" multiple />
 				</ion-card-content>
 			</ion-card>
 
@@ -77,9 +72,6 @@ export default {
 		loadFile(event) {
 			const FileSaver = require("file-saver")
 			const QrcodeDecoder = require("../../node_modules/qrcode-decoder/dist/index.js")
-			/* const QrcodeDecoder = require("qrcode-decoder") */
-
-			console.log(QrcodeDecoder)
 
 			const arr = event.target.files
 
@@ -102,16 +94,10 @@ export default {
 						if (res === false) {
 							// no qr code
 							this.failedAlert(element.name)
-
-							button.textContent = "Processing failed"
-						} else {
-							button.textContent = "Processing completed"
-
+						} else if (res.data.startsWith("otpauth://totp/")) {
 							// construct
 							let url = res.data.replaceAll(/\s/g, "")
 							url = url.slice(15)
-							// otpauth://totp/Authme:authme@levminer.com?secret=1234&issuer=Authme
-							console.log(url)
 
 							// get name
 							let name_index = url.match(/[?]/)
@@ -131,17 +117,13 @@ export default {
 							issuers.push(issuer)
 
 							if (arr.length === i + 1) {
-								console.log(names)
-								console.log(secrets)
-								console.log(issuers)
-
 								this.downloadAlert()
 
 								setTimeout(() => {
 									let str = ""
 
 									for (let j = 0; j < names.length; j++) {
-										let substr = `\nName: ${names[j]} \nSecret: ${secrets[j]} \nIssuer: ${issuers[j]} \nType:   OTP_TOTP\n`
+										const substr = `\nName:   ${names[j]} \nSecret: ${secrets[j]} \nIssuer: ${issuers[j]} \nType:   OTP_TOTP\n`
 
 										str += substr
 									}
@@ -151,6 +133,9 @@ export default {
 									FileSaver.saveAs(blob, "authme_web_import.txt")
 								}, 500)
 							}
+						} else {
+							// no qr code
+							this.wrongAlert(element.name)
 						}
 					})
 				}
@@ -172,7 +157,7 @@ export default {
 							text: "Close",
 							role: "cancel",
 							handler: () => {
-								console.log("Alert closed")
+								console.warn("Alert closed")
 							},
 						},
 					],
@@ -212,8 +197,6 @@ export default {
 
 								str += substr
 							}
-
-							console.log(str)
 
 							const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
 
@@ -263,7 +246,7 @@ export default {
 											text: "Close",
 											role: "cancel",
 											handler: () => {
-												console.log("Alert closed")
+												console.warn("Alert closed")
 											},
 										},
 									],
@@ -282,7 +265,7 @@ export default {
 										text: "Close",
 										role: "cancel",
 										handler: () => {
-											console.log("Alert closed")
+											console.warn("Alert closed")
 										},
 									},
 								],
@@ -306,7 +289,7 @@ export default {
 						text: "Close",
 						role: "cancel",
 						handler: () => {
-							console.log("Alert closed!")
+							console.warn("Alert closed!")
 						},
 					},
 				],
@@ -324,7 +307,7 @@ export default {
 						text: "Close",
 						role: "cancel",
 						handler: () => {
-							console.log("Alert closed")
+							console.warn("Alert closed")
 						},
 					},
 				],
@@ -335,14 +318,32 @@ export default {
 		async failedAlert(name) {
 			const alert = await alertController.create({
 				header: "Authme Web",
-				message: `No QR code found on the picture: ${name} <br><br> Try to take a better picture and try again! <br><br> You can restart with the restart button!`,
+				message: `No QR code found on the picture: ${name} <br><br> Try to take a better picture and try again! <br><br> Please restart the process!`,
 				backdropDismiss: false,
 				buttons: [
 					{
 						text: "Close",
 						role: "cancel",
 						handler: () => {
-							console.log("Alert closed")
+							console.warn("Alert closed")
+						},
+					},
+				],
+			})
+			return alert.present()
+		},
+
+		async wrongAlert(name) {
+			const alert = await alertController.create({
+				header: "Authme Web",
+				message: `Wrong QR code found on the picture: ${name} <br><br> Make sure this is a correct QR code and try again! <br><br> Please restart the process!`,
+				backdropDismiss: false,
+				buttons: [
+					{
+						text: "Close",
+						role: "cancel",
+						handler: () => {
+							console.warn("Alert closed")
 						},
 					},
 				],
@@ -414,7 +415,7 @@ input[type="file"] {
 	}
 
 	#container {
-		margin-bottom: 300px;
+		margin-bottom: 250px;
 	}
 }
 </style>
