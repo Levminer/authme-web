@@ -17,7 +17,7 @@
 					</ion-card-title>
 				</ion-card-header>
 				<ion-card-content>
-					<h3>You can import from QR code(s) here.</h3>
+					<h3>You can import from QR code(s) here. For more information check out the Help tab.</h3>
 
 					<ion-button @click="upload()" class="upload" color="dark" shape="round">Upload QR code(s)</ion-button>
 					<input type="file" accept=".jpg, .jpeg, .png, .bmp" name="image" id="upload" @change="loadFile($event)" multiple />
@@ -31,7 +31,7 @@
 					</ion-card-title>
 				</ion-card-header>
 				<ion-card-content>
-					<h3>You can export your QR code(s) if you saved them on the Codes tab.</h3>
+					<h3>You can export your QR code(s) if you saved them on the Codes tab. For more information check out the Help tab.</h3>
 
 					<ion-button @click="download()" class="download" color="dark" shape="round">Export QR code(s)</ion-button>
 				</ion-card-content>

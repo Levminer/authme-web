@@ -8,7 +8,7 @@
 			</ion-card-header>
 			<ion-card-content>
 				<div class="before">
-					<h2>Please import your Authme file!</h2>
+					<h2>Please import your Authme file! If you don't have one you can create one at the Advanced tab.</h2>
 					<p>More information: <a href="https://docs.authme.levminer.com/#/web" target="_blank">Docs</a></p>
 					<p>
 						For testing:
