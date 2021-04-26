@@ -19,17 +19,21 @@
 			</ion-card-header>
 			<ion-card-content>
 				<details open class="details1">
-					<summary class="summary1">I'm new to Authme</summary>
+					<summary class="summary1">From Authme </summary>
 
 					<p>Download Authme on your desktop and follow the instructions.</p>
+					<br />
+					<p>
+						After you done go to: Top menu > Advanced > Export. Click Export and than click Save as .txt file. After that just import the
+						file you saved.
+					</p>
 				</details>
 
 				<details class="details1">
-					<summary class="summary1">I'm already using Authme</summary>
-
-					<p>
-						Go to: Top menu > Advanced > Export. Click Export and than click Save file. After that just import the file you saved.
-					</p>
+					<summary class="summary1">In Authme Web</summary>
+					<p>Go to the Advanced tab: Upload your QR code(s), then a download window will appear.</p>
+					<br />
+					<p>After that go back to the Codes tab: Upload the file you downloaded.</p>
 				</details>
 			</ion-card-content>
 		</ion-card>
@@ -82,7 +86,7 @@ export default {
 
 <style scoped>
 #container {
-	margin-bottom: 600px;
+	margin-bottom: 850px !important;
 }
 
 .details1 {
@@ -107,7 +111,7 @@ p {
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 1200px !important;
+		margin-bottom: 1500px !important;
 	}
 
 	ion-button {

@@ -5,14 +5,14 @@
 				<ion-title>Codes</ion-title>
 			</ion-toolbar>
 		</ion-header>
-		<ion-content :fullscreen="true">
+		<ion-content>
 			<ion-header collapse="condense">
 				<ion-toolbar>
 					<ion-title size="large">Codes</ion-title>
 				</ion-toolbar>
 			</ion-header>
 
-			<Codes name="Tab 1 page" />
+			<Codes />
 		</ion-content>
 	</ion-page>
 </template>

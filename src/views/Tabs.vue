@@ -2,17 +2,22 @@
 	<ion-page>
 		<ion-tabs>
 			<ion-tab-bar slot="bottom">
-				<ion-tab-button tab="tab1" href="/tabs/tab1">
+				<ion-tab-button tab="tab1" href="/codes">
 					<ion-icon :icon="key" />
 					<ion-label>Codes</ion-label>
 				</ion-tab-button>
 
-				<ion-tab-button tab="tab3" href="/tabs/tab3">
+				<ion-tab-button tab="tab3" href="/help">
 					<ion-icon :icon="helpCircle" />
 					<ion-label>Help</ion-label>
 				</ion-tab-button>
 
-				<ion-tab-button tab="tab2" href="/tabs/tab2">
+				<ion-tab-button tab="tab4" href="/advanced">
+					<ion-icon :icon="colorWand" />
+					<ion-label>Advanced</ion-label>
+				</ion-tab-button>
+
+				<ion-tab-button tab="tab2" href="/settings">
 					<ion-icon :icon="settings" />
 					<ion-label>Settings</ion-label>
 				</ion-tab-button>
@@ -23,7 +28,7 @@
 
 <script>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from "@ionic/vue"
-import { settings, key, helpCircle } from "ionicons/icons"
+import { settings, key, helpCircle, colorWand } from "ionicons/icons"
 
 export default {
 	name: "Tabs",
@@ -33,6 +38,7 @@ export default {
 			settings,
 			key,
 			helpCircle,
+			colorWand,
 		}
 	},
 }

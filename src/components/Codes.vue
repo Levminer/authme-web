@@ -8,13 +8,17 @@
 			</ion-card-header>
 			<ion-card-content>
 				<div class="before">
-					<h2>Please import your Authme file!</h2>
+					<h2>Please import your Authme file! If you don't have one you can create one at the Advanced tab.</h2>
 					<p>More information: <a href="https://docs.authme.levminer.com/#/web" target="_blank">Docs</a></p>
 					<p>
 						For testing:
 						<a href="https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true" target="_blank"
 							>Sample import file</a
 						>
+					</p>
+					<p>
+						For the best expreience install this website as a PWA:
+						<a href="https://docs.authme.levminer.com/#/web-install" target="_blank">Install</a>
 					</p>
 					<br />
 					<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
@@ -78,6 +82,7 @@
 
 <script>
 /* eslint-disable */
+import { alertController } from "@ionic/vue"
 export default {
 	async mounted() {
 		const speakeasy = require("@levminer/speakeasy")
@@ -97,6 +102,7 @@ export default {
 						const element = document.createElement("ion-card")
 
 						element.setAttribute("id", `card${i}`)
+						element.setAttribute("class", `card`)
 
 						element.innerHTML = `
 							<ion-card-header>
@@ -190,7 +196,7 @@ export default {
 					}
 
 					let container = document.querySelector("#container")
-					let margin = name.length * 330
+					let margin = name.length * 400
 
 					document.querySelector(".before").style.display = "none"
 					document.querySelector(".after").style.display = "none"
@@ -202,6 +208,11 @@ export default {
 				}
 
 				generate()
+
+				let someElementsItems = document.querySelectorAll(".card")
+				let el = someElementsItems[someElementsItems.length - 1]
+				console.log(el)
+				el.style.margin = "200px !important"
 			}
 
 			let name = JSON.parse(localStorage.getItem("name"))
@@ -276,7 +287,7 @@ export default {
 			})
 		},
 
-		save() {
+		async save() {
 			// ? save
 			const bcrypt = require("bcryptjs")
 			const SimpleCrypto = require("simple-crypto-js").default
@@ -311,52 +322,85 @@ export default {
 
 				sessionStorage.clear()
 
-				alert("Code(s) saved!")
+				setTimeout(() => {
+					codes_saved()
+				}, 100)
 			}
 
-			let dialog = confirm(
-				"Do you want to create a password to protect the code(s)? Every time you load the page, it's going to ask for a password. You're code(s) can't be accesible outside the browser anyway."
-			)
+			const dialog = await alertController.create({
+				header: "Authme Web",
+				message: `Do you want to create a password to protect the code(s)? <br><br> Every time you load the page, it's going to ask for a password. <br><br> You're code(s) can't be accesible outside the browser anyway.`,
+				backdropDismiss: false,
+				buttons: [
+					{
+						text: "Yes",
+						handler: () => {
+							let after = document.querySelector(".after")
+							let set = document.querySelector(".set")
+							set.style.display = "block"
+							after.style.display = "none"
 
-			if (dialog == true) {
-				let after = document.querySelector(".after")
-				let set = document.querySelector(".set")
-				set.style.display = "block"
-				after.style.display = "none"
+							document.querySelector("#set_button").addEventListener("click", () => {
+								let input1 = document.querySelector("#input1").value
+								let input2 = document.querySelector("#input2").value
+								let set_info = document.querySelector("#set_info")
 
-				document.querySelector("#set_button").addEventListener("click", () => {
-					let input1 = document.querySelector("#input1").value
-					let input2 = document.querySelector("#input2").value
-					let set_info = document.querySelector("#set_info")
+								if (input1 === input2) {
+									set_info.textContent = "Passwords match! Please wait..."
 
-					if (input1 === input2) {
-						set_info.textContent = "Passwords match! Please wait..."
+									setTimeout(() => {
+										go()
 
-						setTimeout(() => {
-							go()
+										set.style.display = "none"
+									}, 500)
+								} else {
+									set_info.textContent = "Passwords don't match!"
+								}
+							})
+						},
+					},
+					{
+						text: "No",
+						role: "cancel",
+						handler: () => {
+							const name = JSON.parse(sessionStorage.getItem("name"))
+							const secret = JSON.parse(sessionStorage.getItem("secret"))
+							const issuer = JSON.parse(sessionStorage.getItem("issuer"))
+							const type = JSON.parse(sessionStorage.getItem("type"))
 
-							set.style.display = "none"
-						}, 500)
-					} else {
-						set_info.textContent = "Passwords don't match!"
-					}
+							localStorage.setItem("name", JSON.stringify(name))
+							localStorage.setItem("secret", JSON.stringify(secret))
+							localStorage.setItem("issuer", JSON.stringify(issuer))
+							localStorage.setItem("type", JSON.stringify(type))
+
+							document.querySelector(".after").style.display = "none"
+
+							setTimeout(() => {
+								codes_saved()
+							}, 100)
+						},
+					},
+				],
+			})
+
+			dialog.present()
+
+			const codes_saved = async () => {
+				const alert = await alertController.create({
+					header: "Authme Web",
+					message: `Code(s) saved!`,
+					backdropDismiss: false,
+					buttons: [
+						{
+							text: "Close",
+							role: "cancel",
+							handler: () => {
+								console.log("Code(s) saved!")
+							},
+						},
+					],
 				})
-			} else {
-				const name = JSON.parse(sessionStorage.getItem("name"))
-				const secret = JSON.parse(sessionStorage.getItem("secret"))
-				const issuer = JSON.parse(sessionStorage.getItem("issuer"))
-				const type = JSON.parse(sessionStorage.getItem("type"))
-
-				localStorage.setItem("name", JSON.stringify(name))
-				localStorage.setItem("secret", JSON.stringify(secret))
-				localStorage.setItem("issuer", JSON.stringify(issuer))
-				localStorage.setItem("type", JSON.stringify(type))
-
-				document.querySelector(".after").style.display = "none"
-
-				setTimeout(() => {
-					alert("Code(s) saved!")
-				}, 100)
+				return alert.present()
 			}
 		},
 
@@ -483,7 +527,7 @@ export default {
 				document.querySelector(".search").style.display = "block"
 
 				let container = document.querySelector("#container")
-				let margin = name.length * 330
+				let margin = name.length * 400
 
 				container.style.marginBottom = `${margin}px`
 
@@ -608,10 +652,18 @@ export default {
 	font-size: 1.5rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
 	.input1 {
 		width: 200px;
 		font-size: 1rem;
+	}
+
+	.input {
+		width: 200px !important;
+	}
+
+	#container {
+		margin-bottom: 450px !important;
 	}
 }
 
@@ -644,12 +696,6 @@ export default {
 
 .search {
 	display: none;
-}
-
-@media only screen and (max-width: 600px) {
-	.input {
-		width: 200px !important;
-	}
 }
 
 input[type="file"] {
