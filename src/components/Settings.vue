@@ -42,6 +42,19 @@
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
+					<h2 id="name">About</h2>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+				<h3>Created by: Levminer</h3>
+				<br />
+				<ion-button class="clear" color="dark" shape="round"><a target="_blank" href="mailto:contact@levminer.com">Contact</a></ion-button>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card>
+			<ion-card-header>
+				<ion-card-title>
 					<h2 id="name">Version</h2>
 				</ion-card-title>
 			</ion-card-header>
@@ -113,7 +126,7 @@ export default {
 
 <style scoped>
 #container {
-	margin-bottom: 800px !important;
+	margin-bottom: 900px !important;
 }
 
 .clear {
@@ -122,7 +135,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
 	#container {
-		margin-bottom: 850px !important;
+		margin-bottom: 1100px !important;
 	}
 
 	.clear {
