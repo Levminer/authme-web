@@ -123,7 +123,9 @@ export default {
 									let str = ""
 
 									for (let j = 0; j < names.length; j++) {
-										const substr = `\nName:   ${names[j]} \nSecret: ${secrets[j]} \nIssuer: ${issuers[j]} \nType:   OTP_TOTP\n`
+										const substr = `\nName:   ${names[j].trim()} \nSecret: ${secrets[j].trim()} \nIssuer: ${issuers[
+											j
+										].trim()} \nType:   OTP_TOTP\n`
 
 										str += substr
 									}
@@ -193,7 +195,9 @@ export default {
 							let str = ""
 
 							for (let i = 0; i < names.length; i++) {
-								let substr = `\nName: ${names[i]} \nSecret: ${secrets[i]} \nIssuer: ${issuers[i]} \nType:   OTP_TOTP\n`
+								let substr = `\nName:   ${names[i].trim()} \nSecret: ${secrets[i].trim()} \nIssuer: ${issuers[
+									i
+								].trim()} \nType:   OTP_TOTP\n`
 
 								str += substr
 							}
@@ -275,7 +279,9 @@ export default {
 							let str = ""
 
 							for (let i = 0; i < names.length; i++) {
-								let substr = `\nName: ${names[i]} \nSecret: ${secrets[i]} \nIssuer: ${issuers[i]} \nType:   OTP_TOTP\n`
+								let substr = `\nName:   ${names[i].trim()} \nSecret: ${secrets[i].trim()} \nIssuer: ${issuers[
+									i
+								].trim()} \nType:   OTP_TOTP\n`
 
 								str += substr
 							}

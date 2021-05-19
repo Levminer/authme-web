@@ -46,7 +46,7 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<h3>1.1.0 (2021. April 27.)</h3>
+				<h3>1.1.1 (2021. May 25.)</h3>
 				<br />
 				<ion-button class="clear" color="dark" shape="round"
 					><a target="_blank" href="https://github.com/levminer/authme-web/releases">Release notes</a></ion-button
