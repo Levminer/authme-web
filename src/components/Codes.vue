@@ -195,24 +195,14 @@ export default {
 						counter++
 					}
 
-					let container = document.querySelector("#container")
-					let margin = name.length * 400
-
 					document.querySelector(".before").style.display = "none"
 					document.querySelector(".after").style.display = "none"
 					document.querySelector(".search").style.display = "block"
-
-					container.style.marginBottom = `${margin}px`
 
 					document.querySelector("#search").focus()
 				}
 
 				generate()
-
-				let someElementsItems = document.querySelectorAll(".card")
-				let el = someElementsItems[someElementsItems.length - 1]
-				console.log(el)
-				el.style.margin = "200px !important"
 			}
 
 			let name = JSON.parse(localStorage.getItem("name"))
@@ -526,11 +516,6 @@ export default {
 
 				document.querySelector(".search").style.display = "block"
 
-				let container = document.querySelector("#container")
-				let margin = name.length * 400
-
-				container.style.marginBottom = `${margin}px`
-
 				generate()
 
 				localStorage.setItem("querry", JSON.stringify(querry))
@@ -650,6 +635,7 @@ export default {
 	margin-top: 30px;
 	transition: 0.2s ease-in;
 	font-size: 1.5rem;
+	text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -703,7 +689,11 @@ input[type="file"] {
 }
 
 a {
-	color: gray !important;
+	color: white !important;
 	text-decoration: underline !important;
+}
+
+p {
+	color: white !important;
 }
 </style>

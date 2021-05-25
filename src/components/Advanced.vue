@@ -366,7 +366,7 @@ export default {
 }
 
 #select {
-	background: #1e1e1e;
+	background: #141414;
 	position: relative;
 	top: 10px;
 	border-radius: 25px;
