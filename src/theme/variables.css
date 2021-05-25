@@ -7,54 +7,19 @@
 	--ion-color-primary-shade: #ffffff;
 	--ion-color-primary-tint: #ffffff;
 
-	--ion-color-secondary: #50c8ff;
-	--ion-color-secondary-rgb: 80, 200, 255;
-	--ion-color-secondary-contrast: #ffffff;
-	--ion-color-secondary-contrast-rgb: 255, 255, 255;
-	--ion-color-secondary-shade: #46b0e0;
-	--ion-color-secondary-tint: #62ceff;
-
-	--ion-color-tertiary: #6a64ff;
-	--ion-color-tertiary-rgb: 106, 100, 255;
-	--ion-color-tertiary-contrast: #ffffff;
-	--ion-color-tertiary-contrast-rgb: 255, 255, 255;
-	--ion-color-tertiary-shade: #5d58e0;
-	--ion-color-tertiary-tint: #7974ff;
-
-	--ion-color-success: #2fdf75;
-	--ion-color-success-rgb: 47, 223, 117;
-	--ion-color-success-contrast: #000000;
-	--ion-color-success-contrast-rgb: 0, 0, 0;
-	--ion-color-success-shade: #29c467;
-	--ion-color-success-tint: #44e283;
-
-	--ion-color-warning: #ffd534;
-	--ion-color-warning-rgb: 255, 213, 52;
-	--ion-color-warning-contrast: #000000;
-	--ion-color-warning-contrast-rgb: 0, 0, 0;
-	--ion-color-warning-shade: #e0bb2e;
-	--ion-color-warning-tint: #ffd948;
-
-	--ion-color-danger: #ff4961;
-	--ion-color-danger-rgb: 255, 73, 97;
-	--ion-color-danger-contrast: #ffffff;
-	--ion-color-danger-contrast-rgb: 255, 255, 255;
-	--ion-color-danger-shade: #e04055;
-	--ion-color-danger-tint: #ff5b71;
-
-	--ion-color-dark: #f4f5f8;
+	--ion-color-dark: #fff;
 	--ion-color-dark-rgb: 244, 245, 248;
 	--ion-color-dark-contrast: #000000;
 	--ion-color-dark-contrast-rgb: 0, 0, 0;
-	--ion-color-dark-shade: #d7d8da;
-	--ion-color-dark-tint: #f5f6f9;
+	--ion-color-dark-shade: #ffffff;
+	--ion-color-dark-tint: #ffffff;
 
 	--ion-color-medium: #989aa2;
 	--ion-color-medium-rgb: 152, 154, 162;
 	--ion-color-medium-contrast: #000000;
 	--ion-color-medium-contrast-rgb: 0, 0, 0;
-	--ion-color-medium-shade: #86888f;
-	--ion-color-medium-tint: #a2a4ab;
+	--ion-color-medium-shade: #ffffff;
+	--ion-color-medium-tint: #ffffff;
 
 	--ion-color-light: #222428;
 	--ion-color-light-rgb: 34, 36, 40;
@@ -63,16 +28,16 @@
 	--ion-color-light-shade: #1e2023;
 	--ion-color-light-tint: #383a3e;
 
-	--ion-background-color: #121212;
-	--ion-background-color-rgb: 18, 18, 18;
+	--ion-background-color: #0a0a0a;
+	--ion-background-color-rgb: 10, 10, 10;
 
 	--ion-text-color: #ffffff;
 	--ion-text-color-rgb: 255, 255, 255;
 
-	--ion-border-color: #222222;
+	--ion-border-color: #000000;
 
-	--ion-color-step-50: #1e1e1e;
-	--ion-color-step-100: #2a2a2a;
+	--ion-color-step-50: #ffffff;
+	--ion-color-step-100: #ffffff;
 	--ion-color-step-150: #363636;
 	--ion-color-step-200: #414141;
 	--ion-color-step-250: #4d4d4d;
@@ -83,21 +48,21 @@
 	--ion-color-step-500: #898989;
 	--ion-color-step-550: #949494;
 	--ion-color-step-600: #a0a0a0;
-	--ion-color-step-650: #acacac;
+	--ion-color-step-650: #ffffff;
 	--ion-color-step-700: #b8b8b8;
 	--ion-color-step-750: #c4c4c4;
 	--ion-color-step-800: #d0d0d0;
 	--ion-color-step-850: #dbdbdb;
 	--ion-color-step-900: #e7e7e7;
-	--ion-color-step-950: #f3f3f3;
+	--ion-color-step-950: #ffffff;
 
 	--ion-item-background: #1e1e1e;
 
-	--ion-toolbar-background: #1f1f1f;
+	--ion-toolbar-background: #000000;
 
-	--ion-tab-bar-background: #1f1f1f;
+	--ion-tab-bar-background: #000000;
 
-	--ion-card-background: #1e1e1e;
+	--ion-card-background: #141414;
 }
 
 * {
@@ -242,7 +207,7 @@ ion-alert button {
 #container p {
 	font-size: 16px;
 	line-height: 22px;
-	color: #8c8c8c;
+	color: white;
 	margin: 0;
 }
 
@@ -250,145 +215,18 @@ ion-alert button {
 	text-decoration: none;
 }
 
-/* summary */
-.summary1 {
-	display: list-item;
-	color: var(--df_primary_color);
-	padding: 10px;
-	margin: -10px -10px 0;
-	cursor: pointer;
-	outline: none;
-	transition: 0.2s ease-in;
-	font-size: 1.5rem;
-
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;
+h1 {
+	color: white !important;
 }
 
-.summary1:hover {
-	color: var(--df_secondary_color);
+h2 {
+	color: white !important;
 }
 
-.summary2 {
-	display: list-item;
-	color: var(--df_primary_color);
-	padding: 10px;
-	margin: -10px -10px 0;
-	cursor: pointer;
-	outline: none;
-	transition: 0.2s ease-in;
-	text-decoration: underline;
-	font-size: 1.5rem;
-
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;
+h3 {
+	color: white !important;
 }
 
-.summary2:hover {
-	color: var(--df_secondary_color);
-	text-decoration: underline dashed;
-}
-
-/* details */
-.details1 {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding: 10px 10px 0;
-	border-radius: 15px;
-	overflow: hidden;
-	float: left;
-	margin-right: auto;
-	margin-right: 90vw;
-}
-
-.details1[open] {
-	margin-bottom: 30px;
-	margin-right: 90vw;
-}
-
-.details1 > :last-child {
-	margin-bottom: 0;
-}
-
-.details1[open] summary {
-	margin-bottom: 10px;
-}
-
-.details1 > :not(summary) {
-	margin-top: 0;
-}
-
-.details2 {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding: 10px 10px 0;
-	border-radius: 15px;
-	overflow: hidden;
-	float: left;
-	margin-right: auto;
-	margin-right: 90vw;
-}
-
-.details2[open] {
-	margin-bottom: 30px;
-	margin-right: 90vw;
-}
-
-.details2 > :last-child {
-	margin-bottom: 0;
-}
-
-.details2[open] summary {
-	margin-bottom: 10px;
-}
-
-.details2 > :not(summary) {
-	margin-top: 0;
-}
-
-/* inputs */
-.input1:focus::placeholder,
-.input2:focus::placeholder {
-	transition: 0.2s ease-in;
-	color: transparent;
-}
-
-.input1:hover::placeholder,
-.input2:hover::placeholder {
-	transition: 0.2s ease-in;
-	color: transparent;
-}
-
-.input1 {
-	color: var(--df_secondary_color);
-	background: var(--df_primary_color);
-	border: 1px solid var(--df_primary_color);
-	font-size: 1rem;
-	padding: 15px 30px;
-	border-radius: 1.8rem;
-	cursor: text;
-	text-align: center;
-	transition: 0.2s ease-in;
-}
-
-.input1:hover {
-	color: var(--df_primary_color);
-	background-color: var(--df_primary_background);
-	border: 1px solid var(--df_primary_color);
-}
-
-.input1::placeholder {
-	color: var(--df_secondary_color);
+ion-chip {
+	background-color: rgb(30, 30, 30);
 }

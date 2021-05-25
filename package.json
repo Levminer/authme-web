@@ -1,5 +1,5 @@
 {
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"name": "authme-web",
 	"description": "Web app for Authme the cross-platform two-factor authentication app.",
 	"author": "Levminer",
@@ -35,7 +35,7 @@
 		"@vue/cli-plugin-router": "~4.5.0",
 		"@vue/cli-plugin-unit-jest": "~4.5.0",
 		"@vue/cli-service": "~4.5.0",
-		"@vue/compiler-sfc": "^3.0.0-0",
+		"@vue/compiler-sfc": "^3.0.11",
 		"@vue/test-utils": "^2.0.0-0",
 		"eslint": "^6.7.2",
 		"eslint-plugin-vue": "^7.0.0-0",

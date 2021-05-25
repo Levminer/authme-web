@@ -91,14 +91,73 @@ export default {
 
 .details1 {
 	width: 100%;
-	background: #1e1e1e;
+	background: #141414;
 }
 
 .summary1 {
 	color: white;
 	font-weight: bolder;
 	text-decoration: underline;
-	background: #1e1e1e;
+	background: #141414;
+}
+
+/* summary */
+.summary1 {
+	color: white;
+	font-weight: bolder;
+	text-decoration: underline;
+	background: #141414;
+	display: list-item;
+	color: var(--df_primary_color);
+	padding: 10px;
+	margin: -10px -10px 0;
+	cursor: pointer;
+	outline: none;
+	transition: 0.2s ease-in;
+	font-size: 1.5rem;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.summary1:hover {
+	color: var(--df_secondary_color);
+}
+
+/* details */
+.details1 {
+	color: white !important;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 10px 10px 0;
+	border-radius: 15px;
+	overflow: hidden;
+	float: left;
+	margin-right: auto;
+	margin-right: 90vw;
+}
+
+.details1[open] {
+	margin-bottom: 30px;
+	margin-right: 90vw;
+}
+
+.details1 > :last-child {
+	margin-bottom: 0;
+}
+
+.details1[open] summary {
+	margin-bottom: 10px;
+}
+
+.details1 > :not(summary) {
+	margin-top: 0;
 }
 
 ion-button {
@@ -106,6 +165,7 @@ ion-button {
 }
 
 p {
+	color: white !important;
 	font-size: 20px !important;
 }
 
