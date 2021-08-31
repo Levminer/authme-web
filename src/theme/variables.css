@@ -1,4 +1,6 @@
 :root {
+	color-scheme: dark;
+
 	/** primary **/
 	--ion-color-primary: #ffffff;
 	--ion-color-primary-rgb: 255, 255, 255;
@@ -86,7 +88,7 @@ ion-content {
 
 ion-button {
 	text-transform: none !important;
-	font-size: 1.5rem !important;
+	font-size: 1.25rem !important;
 	width: 150px !important;
 }
 
@@ -229,4 +231,9 @@ h3 {
 
 ion-chip {
 	background-color: rgb(30, 30, 30);
+}
+
+::selection {
+	color: white;
+	background: gray;
 }
