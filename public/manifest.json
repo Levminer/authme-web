@@ -55,7 +55,25 @@
 			"type": "image/png"
 		}
 	],
-	"start_url": "/",
+	"shortcuts": [
+		{
+			"name": "Codes",
+			"url": "/codes"
+		},
+		{
+			"name": "Help",
+			"url": "/help"
+		},
+		{
+			"name": "Advanced",
+			"url": "/advanced"
+		},
+		{
+			"name": "Settings",
+			"url": "/settings"
+		}
+	],
+	"start_url": "/codes",
 	"display": "standalone",
 	"background_color": "#000000",
 	"theme_color": "#000000"
