@@ -1,6 +1,7 @@
 {
 	"name": "Authme Web",
 	"short_name": "Authme Web",
+	"description": "Web app for Authme the cross-platform two-factor authentication app.",
 	"icons": [
 		{
 			"src": "assets/pwa/android-chrome-192x192.png",
@@ -58,23 +59,40 @@
 	"shortcuts": [
 		{
 			"name": "Codes",
-			"url": "/codes"
+			"url": "/codes",
+			"icons": [{ "src": "assets/shortcuts/codes.png", "sizes": "96x96" }]
 		},
 		{
 			"name": "Help",
-			"url": "/help"
+			"url": "/help",
+			"icons": [{ "src": "assets/shortcuts/help.png", "sizes": "96x96" }]
 		},
 		{
 			"name": "Advanced",
-			"url": "/advanced"
+			"url": "/advanced",
+			"icons": [{ "src": "assets/shortcuts/advanced.png", "sizes": "96x96" }]
 		},
 		{
 			"name": "Settings",
-			"url": "/settings"
+			"url": "/settings",
+			"icons": [{ "src": "assets/shortcuts/settings.png", "sizes": "96x96" }]
+		}
+	],
+	"screenshots": [
+		{
+			"src": "assets/screenshots/codes.png",
+			"type": "image/png",
+			"sizes": "950x830"
+		},
+		{
+			"src": "assets/screenshots/intro.png",
+			"type": "image/jpg",
+			"sizes": "950x830"
 		}
 	],
 	"start_url": "/codes",
 	"display": "standalone",
 	"background_color": "#000000",
-	"theme_color": "#000000"
+	"theme_color": "#000000",
+	"orientation": "portrait"
 }
