@@ -71,7 +71,7 @@ export default {
 
 		loadFile(event) {
 			const FileSaver = require("file-saver")
-			const QrcodeDecoder = require("../../node_modules/qrcode-decoder/dist/index.js")
+			const QrcodeDecoder = require("qrcode-decoder").default
 
 			const arr = event.target.files
 

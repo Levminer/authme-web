@@ -36,4 +36,10 @@ const router = createRouter({
 	routes,
 })
 
+router.beforeResolve(() => {
+	if (window.navigator.vibrate) {
+		window.navigator.vibrate(100)
+	}
+})
+
 export default router
