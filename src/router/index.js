@@ -38,7 +38,7 @@ const router = createRouter({
 
 router.beforeResolve(() => {
 	if (window.navigator.vibrate) {
-		window.navigator.vibrate(100)
+		window.navigator.vibrate(25)
 	}
 })
 
