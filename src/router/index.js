@@ -19,10 +19,6 @@ const routes = [
 				component: () => import("@/views/Tab2.vue"),
 			},
 			{
-				path: "help",
-				component: () => import("@/views/Tab3.vue"),
-			},
-			{
 				path: "advanced",
 				component: () => import("@/views/Tab4.vue"),
 			},

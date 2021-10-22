@@ -1,6 +1,7 @@
 {
 	"version": "1.2.1",
 	"name": "authme-web",
+	"date": "2021. October 26.",
 	"description": "Web app for Authme the cross-platform two-factor authentication app.",
 	"author": "Levminer",
 	"license": "GPL-3.0",

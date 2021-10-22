@@ -8,20 +8,23 @@
 			</ion-card-header>
 			<ion-card-content>
 				<div class="before">
-					<h2>Please import your Authme file! If you don't have one you can create one at the Advanced tab.</h2>
-					<p>More information: <a href="https://docs.authme.levminer.com/#/web" target="_blank">Docs</a></p>
+					<h3>Please import your Authme file! If you don't have one you can create one at the Advanced tab.</h3>
+					<p class="before_info">More information: <a href="https://docs.authme.levminer.com/#/web" target="_blank">Docs</a></p>
 					<p>
 						For testing:
-						<a href="https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true" target="_blank"
-							>Sample import file</a
-						>
+						<a href="https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true" target="_blank">Sample import file</a>
 					</p>
 					<p>
 						For the best expreience install this website as a PWA:
 						<a href="https://docs.authme.levminer.com/#/web-install" target="_blank">Install</a>
 					</p>
 					<br />
-					<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
+					<button @click="input" class="import buttoni">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						Import
+					</button>
 					<input type="file" class="file" id="file" @change="load" accept=".txt" />
 				</div>
 				<div class="confirm">
@@ -32,16 +35,7 @@
 					<h4 id="info">Press enter to confirm!</h4>
 				</div>
 				<div class="search">
-					<input
-						type="text"
-						class="input1"
-						id="search"
-						@keydown="search"
-						@keyup="search"
-						placeholder="Search for names..."
-						autocomplete="off"
-						autofocus
-					/>
+					<input type="text" class="input1" id="search" @keydown="search" @keyup="search" placeholder="Search for names..." autocomplete="off" autofocus />
 				</div>
 			</ion-card-content>
 		</ion-card>
@@ -52,7 +46,12 @@
 			</ion-card-title>
 
 			<ion-card-content>
-				<ion-button @click="save" class="save" color="dark" shape="round">Save</ion-button>
+				<button @click="save" class="buttoni">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+					</svg>
+					Save
+				</button>
 			</ion-card-content>
 		</ion-card>
 
@@ -76,7 +75,7 @@
 				</div>
 			</ion-card-content>
 		</ion-card>
-		<div class="next"></div>
+		<div class="next container"></div>
 	</div>
 </template>
 
@@ -110,15 +109,18 @@ export default {
 									<h1 id="name${i}">Name</h1>
 								</ion-card-title>
 								<ion-card-subtitle>
-									<h2 id="time${i}">Time</h2>
+									<h2 class="time" id="time${i}">Time</h2>
 								</ion-card-subtitle>
 							</ion-card-header>
 							<ion-card-content>
-								<ion-chip>
-									<ion-input value="custom" id="code${i}" readonly></ion-input>
-								</ion-chip>
+									<input class="input1 code" value="custom" id="code${i}" readonly></input>
 								<br />
-								<ion-button shape="round" color="dark" id="copy${i}" data-clipboard-target="#code${i}">Copy</ion-button>
+								<button class="buttoni sm" id="copy${i}">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								</button>
 							</ion-card-content>`
 
 						// set div in html
@@ -131,10 +133,20 @@ export default {
 							let codeinp = document.querySelector(`#code${i}`).value
 
 							clipboard.writeText(codeinp)
-							copybtn.textContent = "Copied"
+							copybtn.innerHTML = `
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+							</svg>
+							Copied
+							`
 
 							setTimeout(() => {
-								copybtn.textContent = "Copy"
+								copybtn.innerHTML = `
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								`
 							}, 1000)
 						})
 
@@ -430,7 +442,7 @@ export default {
 									<ion-input value="custom" id="code${i}" readonly></ion-input>
 								</ion-chip>
 								<br />
-								<ion-button shape="round" color="dark" id="copy${i}">Copy</ion-button>
+								<button class="buttoni" id="copy${i}">Copy</button>
 							</ion-card-content>`
 
 						// set div in html
@@ -695,5 +707,9 @@ a {
 
 p {
 	color: white !important;
+}
+
+.before_info {
+	padding-top: 20px;
 }
 </style>
