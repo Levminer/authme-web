@@ -21,7 +21,7 @@
 					<br />
 					<button @click="input" class="import buttoni">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
 						</svg>
 						Import
 					</button>
@@ -637,51 +637,19 @@ export default {
 	display: none;
 }
 
-.input1 {
-	border: 1px solid white;
-	width: 300px;
-	background: white;
-	color: black;
-	height: 40px;
-	border-radius: 50px;
-	margin-top: 30px;
-	transition: 0.2s ease-in;
-	font-size: 1.5rem;
-	text-align: center;
+#search {
+	width: 50%;
+	margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 600px) {
-	.input1 {
-		width: 200px;
-		font-size: 1rem;
-	}
-
-	.input {
-		width: 200px !important;
+	#search {
+		width: 95% !important;
 	}
 
 	#container {
 		margin-bottom: 450px !important;
 	}
-}
-
-.input1::placeholder {
-	color: black;
-	transition: 0.2s ease-in;
-}
-
-.input:hover {
-	color: black;
-	transition: 0.2s ease-in;
-}
-
-.input1:focus::placeholder {
-	color: transparent;
-	transition: 0.2s ease-in;
-}
-.input1:hover::placeholder {
-	color: transparent;
-	transition: 0.2s ease-in;
 }
 
 .set {

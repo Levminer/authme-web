@@ -185,6 +185,12 @@ ion-alert button {
 	color: white !important;
 }
 
+.alert-wrapper.ion-overlay-wrapper.sc-ion-alert-ios {
+	border-radius: 15px;
+	background-color: rgb(30, 30, 30) !important;
+	color: white !important;
+}
+
 @media only screen and (max-width: 600px) {
 	#container {
 		left: 10%;
@@ -213,6 +219,25 @@ ion-alert button {
 
 	ion-input {
 		font-size: 1.25rem !important;
+	}
+
+	.buttoni {
+		font-size: 1.12rem !important;
+		padding: 12px 12px !important;
+		padding-top: 8px !important;
+	}
+
+	.h-6 {
+		height: 1.3rem !important;
+	}
+
+	.w-6 {
+		width: 1.3rem !important;
+	}
+
+	.input1 {
+		font-size: 1.12rem !important;
+		padding: 10px 0px !important;
 	}
 }
 
@@ -314,7 +339,17 @@ ion-button {
 }
 
 .input1::placeholder {
-	color: var(--df_secondary_color);
+	color: black;
+}
+
+.input1:hover::placeholder {
+	transition: 0.2s ease-in;
+	color: transparent;
+}
+
+.input1:focus::placeholder {
+	transition: 0.2s ease-in;
+	color: transparent;
 }
 
 .code {
