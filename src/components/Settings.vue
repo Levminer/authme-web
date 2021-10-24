@@ -132,11 +132,11 @@ export default {
 		},
 
 		async about() {
-			const text = `Authme version: ${appVersion} (${appDate}) \n\nUser agent: ${navigator.userAgent}`
+			const text = `Authme Web version: ${appVersion} (${appDate}) \n\nBrowser User agent: ${navigator.userAgent}`
 
 			const alert = await alertController.create({
 				header: "Authme Web",
-				message: `Authme version: ${appVersion} (${appDate}) <br><br> User agent: ${navigator.userAgent}`,
+				message: `Authme Web version: ${appVersion} (${appDate}) <br><br> Browser User agent: ${navigator.userAgent}`,
 				backdropDismiss: false,
 				buttons: [
 					{

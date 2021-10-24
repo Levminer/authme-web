@@ -132,6 +132,8 @@ export default {
 						copybtn.addEventListener("click", () => {
 							let codeinp = document.querySelector(`#code${i}`).value
 
+							window.navigator.vibrate(15)
+
 							clipboard.writeText(codeinp)
 							copybtn.innerHTML = `
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -331,7 +333,7 @@ export default {
 
 			const dialog = await alertController.create({
 				header: "Authme Web",
-				message: `Do you want to create a password to protect the code(s)? <br><br> Every time you load the page, it's going to ask for a password. <br><br> You're code(s) can't be accesible outside the browser anyway.`,
+				message: `Do you want to create a password to protect the code(s)? <br><br> You're code(s) can't be accesible outside the browser anyway.`,
 				backdropDismiss: false,
 				buttons: [
 					{
@@ -411,6 +413,10 @@ export default {
 			document.getElementById("file").click()
 		},
 
+		advanced() {
+			location.replace("/advanced")
+		},
+
 		load(event) {
 			const speakeasy = require("@levminer/speakeasy")
 			const clipboard = require("clipboard-polyfill")
@@ -434,15 +440,18 @@ export default {
 									<h1 id="name${i}">Name</h1>
 								</ion-card-title>
 								<ion-card-subtitle>
-									<h2 id="time${i}">Time</h2>
+									<h2 class="time" id="time${i}">Time</h2>
 								</ion-card-subtitle>
 							</ion-card-header>
 							<ion-card-content>
-								<ion-chip>
-									<ion-input value="custom" id="code${i}" readonly></ion-input>
-								</ion-chip>
+									<input class="input1 code" value="custom" id="code${i}" readonly></input>
 								<br />
-								<button class="buttoni" id="copy${i}">Copy</button>
+								<button class="buttoni sm" id="copy${i}">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								</button>
 							</ion-card-content>`
 
 						// set div in html
@@ -454,11 +463,23 @@ export default {
 						copybtn.addEventListener("click", () => {
 							let codeinp = document.querySelector(`#code${i}`).value
 
+							window.navigator.vibrate(15)
+
 							clipboard.writeText(codeinp)
-							copybtn.textContent = "Copied"
+							copybtn.innerHTML = `
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+							</svg>
+							Copied
+							`
 
 							setTimeout(() => {
-								copybtn.textContent = "Copy"
+								copybtn.innerHTML = `
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								`
 							}, 1000)
 						})
 
@@ -679,5 +700,9 @@ p {
 
 .before_info {
 	padding-top: 20px;
+}
+
+.import {
+	margin: 1rem;
 }
 </style>

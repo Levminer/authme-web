@@ -72,6 +72,10 @@ export default {
 			let import_div = document.querySelector("#import")
 			let export_div = document.querySelector("#export")
 
+			if (window.navigator.vibrate) {
+				window.navigator.vibrate(25)
+			}
+
 			if (event === "import") {
 				import_div.style.display = "block"
 				export_div.style.display = "none"
