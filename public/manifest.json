@@ -63,11 +63,6 @@
 			"icons": [{ "src": "assets/shortcuts/codes.png", "sizes": "96x96" }]
 		},
 		{
-			"name": "Help",
-			"url": "/help",
-			"icons": [{ "src": "assets/shortcuts/help.png", "sizes": "96x96" }]
-		},
-		{
 			"name": "Advanced",
 			"url": "/advanced",
 			"icons": [{ "src": "assets/shortcuts/advanced.png", "sizes": "96x96" }]
@@ -86,7 +81,7 @@
 		},
 		{
 			"src": "assets/screenshots/intro.png",
-			"type": "image/jpg",
+			"type": "image/png",
 			"sizes": "1080x840"
 		}
 	],
