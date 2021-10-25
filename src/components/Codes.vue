@@ -8,30 +8,44 @@
 			</ion-card-header>
 			<ion-card-content>
 				<div class="before">
-					<h3>Please import your Authme file! If you don't have one you can create one at the Advanced tab.</h3>
-					<p class="before_info">More information: <a href="https://docs.authme.levminer.com/#/web" target="_blank">Docs</a></p>
-					<p>
-						For testing:
-						<a href="https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true" target="_blank">Sample import file</a>
-					</p>
-					<p>
-						For the best expreience install this website as a PWA:
-						<a href="https://docs.authme.levminer.com/#/web-install" target="_blank">Install</a>
-					</p>
+					<h3>
+						Please choose your import file! <br />
+						If you don't have an import file please create one!
+					</h3>
 					<br />
-					<button @click="input" class="import buttoni">
+					<button @click="input" class="import buttoni buttons">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
 						</svg>
-						Import
+						Choose file
 					</button>
 					<input type="file" class="file" id="file" @change="load" accept=".txt" />
+					<button class="buttoni buttons" @click="advanced">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						Create file
+					</button>
+					<br />
+					<h3 class="m">
+						Read the import guide or download a sample file to try out Authme Web.
+					</h3>
+					<button @click="guide" class="buttoni buttons">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+						</svg>
+						Import guide
+					</button>
+					<button @click="sample" class="buttoni buttons">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						Sample file
+					</button>
 				</div>
 				<div class="confirm">
 					<h2>Confirm password</h2>
-					<ion-chip class="input">
-						<ion-input id="input0" type="password" placeholder="Password"></ion-input>
-					</ion-chip>
+					<input class="input1 m" id="input0" type="password" placeholder="Password" />
 					<h4 id="info">Press enter to confirm!</h4>
 				</div>
 				<div class="search">
@@ -42,7 +56,8 @@
 
 		<ion-card class="after">
 			<ion-card-title>
-				<h2>Save config</h2>
+				<h2>Save code(s)</h2>
+				<h3>Save your code(s) for future use.</h3>
 			</ion-card-title>
 
 			<ion-card-content>
@@ -57,19 +72,20 @@
 
 		<ion-card class="set">
 			<ion-card-title>
-				<h2>Set password</h2>
+				<h2>Create password</h2>
 			</ion-card-title>
 
 			<ion-card-content>
 				<div>
-					<ion-chip class="input">
-						<ion-input id="input1" type="password" placeholder="Password"></ion-input>
-					</ion-chip>
-					<ion-chip class="input">
-						<ion-input id="input2" type="password" placeholder="Password"></ion-input>
-					</ion-chip>
+					<input class="input1 m" id="input1" type="password" placeholder="Password" />
+					<input class="input1 m" id="input2" type="password" placeholder="Password" />
 					<br />
-					<ion-button id="set_button" class="save" color="dark" shape="round">Confirm</ion-button>
+					<button id="set_button" class="buttoni save m">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+						</svg>
+						Confirm
+					</button>
 
 					<h4 id="set_info">Press the button to confirm!</h4>
 				</div>
@@ -265,6 +281,14 @@ export default {
 
 	//? METHODS
 	methods: {
+		guide() {
+			window.open("https://docs.authme.levminer.com/#/web-import", "_blank")
+		},
+
+		sample() {
+			window.open("https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true", "_blank")
+		},
+
 		search(event) {
 			// ? search
 			const querry = JSON.parse(localStorage.getItem("querry"))
@@ -349,16 +373,22 @@ export default {
 								let input2 = document.querySelector("#input2").value
 								let set_info = document.querySelector("#set_info")
 
-								if (input1 === input2) {
-									set_info.textContent = "Passwords match! Please wait..."
-
-									setTimeout(() => {
-										go()
-
-										set.style.display = "none"
-									}, 500)
+								if (input1.length < 8) {
+									set_info.textContent = "Minimum password length is 8 charachters!"
+								} else if (input1.length > 64) {
+									set_info.textContent = "Maximum password length is 64 charachters!"
 								} else {
-									set_info.textContent = "Passwords don't match!"
+									if (input1 === input2) {
+										set_info.textContent = "Passwords match! Please wait..."
+
+										setTimeout(() => {
+											go()
+
+											set.style.display = "none"
+										}, 500)
+									} else {
+										set_info.textContent = "Passwords don't match!"
+									}
 								}
 							})
 						},
@@ -704,5 +734,17 @@ p {
 
 .import {
 	margin: 1rem;
+}
+
+.m {
+	margin: 1rem;
+}
+
+.buttons {
+	margin: 0.5rem;
+}
+
+h4 {
+	color: white !important;
 }
 </style>
