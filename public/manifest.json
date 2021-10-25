@@ -82,12 +82,12 @@
 		{
 			"src": "assets/screenshots/codes.png",
 			"type": "image/png",
-			"sizes": "950x830"
+			"sizes": "1080x840"
 		},
 		{
 			"src": "assets/screenshots/intro.png",
 			"type": "image/jpg",
-			"sizes": "950x830"
+			"sizes": "1080x840"
 		}
 	],
 	"start_url": "/codes",
