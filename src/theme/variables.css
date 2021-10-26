@@ -69,6 +69,11 @@
 
 * {
 	outline: none;
+	font-family: Arial, Helvetica, sans-serif !important;
+}
+
+ion-alert * {
+	color: white !important;
 }
 
 ion-content {
@@ -133,9 +138,13 @@ a {
 	position: relative;
 	left: 25%;
 	right: 0;
-	top: 30vh;
 	width: 50%;
 	height: 95%;
+	margin-top: 150px;
+}
+
+.container {
+	padding-bottom: 100px;
 }
 
 ion-tab-bar {
@@ -152,7 +161,7 @@ ion-router-outlet > .ion-page {
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
-		transform: translate3d(0, 5vh, 0);
+		transform: translate3d(0, 10vh, 0);
 	}
 	100% {
 		opacity: 1;
@@ -168,6 +177,18 @@ ion-alert {
 
 ion-alert button {
 	text-transform: none !important;
+}
+
+.alert-wrapper.ion-overlay-wrapper.sc-ion-alert-md {
+	border-radius: 15px;
+	background-color: rgb(30, 30, 30);
+	color: white !important;
+}
+
+.alert-wrapper.ion-overlay-wrapper.sc-ion-alert-ios {
+	border-radius: 15px;
+	background-color: rgb(30, 30, 30) !important;
+	color: white !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -198,6 +219,25 @@ ion-alert button {
 
 	ion-input {
 		font-size: 1.25rem !important;
+	}
+
+	.buttoni {
+		font-size: 1.12rem !important;
+		padding: 12px 12px !important;
+		padding-top: 8px !important;
+	}
+
+	.h-6 {
+		height: 1.3rem !important;
+	}
+
+	.w-6 {
+		width: 1.3rem !important;
+	}
+
+	.input1 {
+		font-size: 1.12rem !important;
+		padding: 10px 0px !important;
 	}
 }
 
@@ -236,4 +276,92 @@ ion-chip {
 ::selection {
 	color: white;
 	background: gray;
+}
+
+ion-button {
+	padding: -50px !important;
+}
+
+.buttoni {
+	color: black !important;
+	background: white;
+	border: 2px solid white;
+	font-size: 1.25rem;
+	padding: 17px 30px;
+	padding-top: 12px;
+	border-radius: 30px;
+	cursor: pointer;
+	text-decoration: none;
+	transition: 0.2s ease-in;
+	text-align: center;
+	width: 14rem;
+}
+
+.buttoni:hover {
+	border-color: white;
+	background: transparent;
+	color: white !important;
+}
+
+.buttoni > svg {
+	position: relative;
+	top: 4px;
+}
+
+.h-6 {
+	height: 1.5rem;
+}
+
+.w-6 {
+	width: 1.5rem;
+}
+
+.sm {
+	width: 10rem !important;
+}
+
+.input1 {
+	color: black;
+	background: white;
+	border: 2px solid white;
+	font-size: 20px;
+	padding: 13px 0px;
+	border-radius: 1.8rem;
+	cursor: text;
+	text-align: center;
+	transition: 0.2s ease-in;
+}
+
+.input1:hover {
+	color: white;
+	background-color: transparent;
+	border: 2px solid white;
+}
+
+.input1::placeholder {
+	color: black;
+}
+
+.input1:hover::placeholder {
+	transition: 0.2s ease-in;
+	color: transparent;
+}
+
+.input1:focus::placeholder {
+	transition: 0.2s ease-in;
+	color: transparent;
+}
+
+.code {
+	margin-bottom: 20px;
+	width: 10rem;
+	color: white;
+	background-color: rgb(30, 30, 30);
+	border-color: rgb(30, 30, 30);
+}
+
+.code:hover {
+	color: white;
+	background-color: rgb(30, 30, 30);
+	border-color: rgb(30, 30, 30);
 }

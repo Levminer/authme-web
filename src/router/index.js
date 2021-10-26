@@ -19,10 +19,6 @@ const routes = [
 				component: () => import("@/views/Tab2.vue"),
 			},
 			{
-				path: "help",
-				component: () => import("@/views/Tab3.vue"),
-			},
-			{
 				path: "advanced",
 				component: () => import("@/views/Tab4.vue"),
 			},
@@ -34,6 +30,12 @@ const routes = [
 const router = createRouter({
 	history: createWebHistory(process.env.BASE_URL),
 	routes,
+})
+
+router.beforeResolve(() => {
+	if (window.navigator.vibrate) {
+		window.navigator.vibrate(25)
+	}
 })
 
 export default router

@@ -7,11 +7,6 @@
 					<ion-label>Codes</ion-label>
 				</ion-tab-button>
 
-				<ion-tab-button tab="tab3" href="/help">
-					<ion-icon :icon="helpCircle" />
-					<ion-label>Help</ion-label>
-				</ion-tab-button>
-
 				<ion-tab-button tab="tab4" href="/advanced">
 					<ion-icon :icon="apps" />
 					<ion-label>Advanced</ion-label>

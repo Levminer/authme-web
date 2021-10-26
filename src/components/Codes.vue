@@ -8,75 +8,90 @@
 			</ion-card-header>
 			<ion-card-content>
 				<div class="before">
-					<h2>Please import your Authme file! If you don't have one you can create one at the Advanced tab.</h2>
-					<p>More information: <a href="https://docs.authme.levminer.com/#/web" target="_blank">Docs</a></p>
-					<p>
-						For testing:
-						<a href="https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true" target="_blank"
-							>Sample import file</a
-						>
-					</p>
-					<p>
-						For the best expreience install this website as a PWA:
-						<a href="https://docs.authme.levminer.com/#/web-install" target="_blank">Install</a>
-					</p>
+					<h3>
+						Please choose your import file! <br />
+						If you don't have an import file please create one!
+					</h3>
 					<br />
-					<ion-button @click="input" class="import" color="dark" shape="round">Import</ion-button>
+					<button @click="input" class="import buttoni buttons">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+						</svg>
+						Choose file
+					</button>
 					<input type="file" class="file" id="file" @change="load" accept=".txt" />
+					<button class="buttoni buttons" @click="advanced">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						Create file
+					</button>
+					<br />
+					<h3 class="m">
+						Read the import guide or download a sample file to try out Authme Web.
+					</h3>
+					<button @click="guide" class="buttoni buttons">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+						</svg>
+						Import guide
+					</button>
+					<button @click="sample" class="buttoni buttons">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						Sample file
+					</button>
 				</div>
 				<div class="confirm">
 					<h2>Confirm password</h2>
-					<ion-chip class="input">
-						<ion-input id="input0" type="password" placeholder="Password"></ion-input>
-					</ion-chip>
+					<input class="input1 m" id="input0" type="password" placeholder="Password" />
 					<h4 id="info">Press enter to confirm!</h4>
 				</div>
 				<div class="search">
-					<input
-						type="text"
-						class="input1"
-						id="search"
-						@keydown="search"
-						@keyup="search"
-						placeholder="Search for names..."
-						autocomplete="off"
-						autofocus
-					/>
+					<input type="text" class="input1" id="search" @keydown="search" @keyup="search" placeholder="Search for names..." autocomplete="off" autofocus />
 				</div>
 			</ion-card-content>
 		</ion-card>
 
 		<ion-card class="after">
 			<ion-card-title>
-				<h2>Save config</h2>
+				<h2>Save code(s)</h2>
+				<h3>Save your code(s) for future use.</h3>
 			</ion-card-title>
 
 			<ion-card-content>
-				<ion-button @click="save" class="save" color="dark" shape="round">Save</ion-button>
+				<button @click="save" class="buttoni">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+					</svg>
+					Save
+				</button>
 			</ion-card-content>
 		</ion-card>
 
 		<ion-card class="set">
 			<ion-card-title>
-				<h2>Set password</h2>
+				<h2>Create password</h2>
 			</ion-card-title>
 
 			<ion-card-content>
 				<div>
-					<ion-chip class="input">
-						<ion-input id="input1" type="password" placeholder="Password"></ion-input>
-					</ion-chip>
-					<ion-chip class="input">
-						<ion-input id="input2" type="password" placeholder="Password"></ion-input>
-					</ion-chip>
+					<input class="input1 m" id="input1" type="password" placeholder="Password" />
+					<input class="input1 m" id="input2" type="password" placeholder="Password" />
 					<br />
-					<ion-button id="set_button" class="save" color="dark" shape="round">Confirm</ion-button>
+					<button id="set_button" class="buttoni save m">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+						</svg>
+						Confirm
+					</button>
 
 					<h4 id="set_info">Press the button to confirm!</h4>
 				</div>
 			</ion-card-content>
 		</ion-card>
-		<div class="next"></div>
+		<div class="next container"></div>
 	</div>
 </template>
 
@@ -110,15 +125,18 @@ export default {
 									<h1 id="name${i}">Name</h1>
 								</ion-card-title>
 								<ion-card-subtitle>
-									<h2 id="time${i}">Time</h2>
+									<h2 class="time" id="time${i}">Time</h2>
 								</ion-card-subtitle>
 							</ion-card-header>
 							<ion-card-content>
-								<ion-chip>
-									<ion-input value="custom" id="code${i}" readonly></ion-input>
-								</ion-chip>
+									<input class="input1 code" value="custom" id="code${i}" readonly></input>
 								<br />
-								<ion-button shape="round" color="dark" id="copy${i}" data-clipboard-target="#code${i}">Copy</ion-button>
+								<button class="buttoni sm" id="copy${i}">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								</button>
 							</ion-card-content>`
 
 						// set div in html
@@ -130,11 +148,23 @@ export default {
 						copybtn.addEventListener("click", () => {
 							let codeinp = document.querySelector(`#code${i}`).value
 
+							window.navigator.vibrate(15)
+
 							clipboard.writeText(codeinp)
-							copybtn.textContent = "Copied"
+							copybtn.innerHTML = `
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+							</svg>
+							Copied
+							`
 
 							setTimeout(() => {
-								copybtn.textContent = "Copy"
+								copybtn.innerHTML = `
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								`
 							}, 1000)
 						})
 
@@ -251,6 +281,14 @@ export default {
 
 	//? METHODS
 	methods: {
+		guide() {
+			window.open("https://docs.authme.levminer.com/#/web-import", "_blank")
+		},
+
+		sample() {
+			window.open("https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true", "_blank")
+		},
+
 		search(event) {
 			// ? search
 			const querry = JSON.parse(localStorage.getItem("querry"))
@@ -319,7 +357,7 @@ export default {
 
 			const dialog = await alertController.create({
 				header: "Authme Web",
-				message: `Do you want to create a password to protect the code(s)? <br><br> Every time you load the page, it's going to ask for a password. <br><br> You're code(s) can't be accesible outside the browser anyway.`,
+				message: `Do you want to create a password to protect the code(s)? <br><br> You're code(s) can't be accesible outside the browser anyway.`,
 				backdropDismiss: false,
 				buttons: [
 					{
@@ -335,16 +373,22 @@ export default {
 								let input2 = document.querySelector("#input2").value
 								let set_info = document.querySelector("#set_info")
 
-								if (input1 === input2) {
-									set_info.textContent = "Passwords match! Please wait..."
-
-									setTimeout(() => {
-										go()
-
-										set.style.display = "none"
-									}, 500)
+								if (input1.length < 8) {
+									set_info.textContent = "Minimum password length is 8 charachters!"
+								} else if (input1.length > 64) {
+									set_info.textContent = "Maximum password length is 64 charachters!"
 								} else {
-									set_info.textContent = "Passwords don't match!"
+									if (input1 === input2) {
+										set_info.textContent = "Passwords match! Please wait..."
+
+										setTimeout(() => {
+											go()
+
+											set.style.display = "none"
+										}, 500)
+									} else {
+										set_info.textContent = "Passwords don't match!"
+									}
 								}
 							})
 						},
@@ -399,6 +443,10 @@ export default {
 			document.getElementById("file").click()
 		},
 
+		advanced() {
+			location.replace("/advanced")
+		},
+
 		load(event) {
 			const speakeasy = require("@levminer/speakeasy")
 			const clipboard = require("clipboard-polyfill")
@@ -422,15 +470,18 @@ export default {
 									<h1 id="name${i}">Name</h1>
 								</ion-card-title>
 								<ion-card-subtitle>
-									<h2 id="time${i}">Time</h2>
+									<h2 class="time" id="time${i}">Time</h2>
 								</ion-card-subtitle>
 							</ion-card-header>
 							<ion-card-content>
-								<ion-chip>
-									<ion-input value="custom" id="code${i}" readonly></ion-input>
-								</ion-chip>
+									<input class="input1 code" value="custom" id="code${i}" readonly></input>
 								<br />
-								<ion-button shape="round" color="dark" id="copy${i}">Copy</ion-button>
+								<button class="buttoni sm" id="copy${i}">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								</button>
 							</ion-card-content>`
 
 						// set div in html
@@ -442,11 +493,23 @@ export default {
 						copybtn.addEventListener("click", () => {
 							let codeinp = document.querySelector(`#code${i}`).value
 
+							window.navigator.vibrate(15)
+
 							clipboard.writeText(codeinp)
-							copybtn.textContent = "Copied"
+							copybtn.innerHTML = `
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+							</svg>
+							Copied
+							`
 
 							setTimeout(() => {
-								copybtn.textContent = "Copy"
+								copybtn.innerHTML = `
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+								</svg>
+								Copy
+								`
 							}, 1000)
 						})
 
@@ -625,51 +688,19 @@ export default {
 	display: none;
 }
 
-.input1 {
-	border: 1px solid white;
-	width: 300px;
-	background: white;
-	color: black;
-	height: 40px;
-	border-radius: 50px;
-	margin-top: 30px;
-	transition: 0.2s ease-in;
-	font-size: 1.5rem;
-	text-align: center;
+#search {
+	width: 50%;
+	margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 600px) {
-	.input1 {
-		width: 200px;
-		font-size: 1rem;
-	}
-
-	.input {
-		width: 200px !important;
+	#search {
+		width: 95% !important;
 	}
 
 	#container {
 		margin-bottom: 450px !important;
 	}
-}
-
-.input1::placeholder {
-	color: black;
-	transition: 0.2s ease-in;
-}
-
-.input:hover {
-	color: black;
-	transition: 0.2s ease-in;
-}
-
-.input1:focus::placeholder {
-	color: transparent;
-	transition: 0.2s ease-in;
-}
-.input1:hover::placeholder {
-	color: transparent;
-	transition: 0.2s ease-in;
 }
 
 .set {
@@ -694,6 +725,26 @@ a {
 }
 
 p {
+	color: white !important;
+}
+
+.before_info {
+	padding-top: 20px;
+}
+
+.import {
+	margin: 1rem;
+}
+
+.m {
+	margin: 1rem;
+}
+
+.buttons {
+	margin: 0.5rem;
+}
+
+h4 {
 	color: white !important;
 }
 </style>

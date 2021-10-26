@@ -10,32 +10,44 @@
 		</ion-segment>
 
 		<div id="container">
-			<ion-card id="import" class="tab">
-				<ion-card-header>
-					<ion-card-title>
-						<h1>Import</h1>
-					</ion-card-title>
-				</ion-card-header>
-				<ion-card-content>
-					<h3>You can import from QR code(s) here. For more information check out the Help tab.</h3>
+			<div class="container">
+				<ion-card id="import" class="tab">
+					<ion-card-header>
+						<ion-card-title>
+							<h1>Import</h1>
+						</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<h3>You can import from QR code(s) here. For more information check out the documentation.</h3>
 
-					<ion-button @click="upload()" class="upload" color="dark" shape="round">Upload QR code(s)</ion-button>
-					<input type="file" accept=".jpg, .jpeg, .png, .bmp" name="image" id="upload" @change="loadFile($event)" multiple />
-				</ion-card-content>
-			</ion-card>
+						<button @click="upload()" class="buttoni xl">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+							</svg>
+							Import
+						</button>
+						<input type="file" accept=".jpg, .jpeg, .png, .bmp" name="image" id="upload" @change="loadFile($event)" multiple />
+					</ion-card-content>
+				</ion-card>
 
-			<ion-card id="export" class="tab">
-				<ion-card-header>
-					<ion-card-title>
-						<h1>Export</h1>
-					</ion-card-title>
-				</ion-card-header>
-				<ion-card-content>
-					<h3>You can export your QR code(s) if you saved them on the Codes tab. For more information check out the Help tab.</h3>
+				<ion-card id="export" class="tab">
+					<ion-card-header>
+						<ion-card-title>
+							<h1>Export</h1>
+						</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<h3>You can export your 2FA code(s) if you saved them on the Codes tab. For more information check out the documentation.</h3>
 
-					<ion-button @click="download()" class="download" color="dark" shape="round">Export QR code(s)</ion-button>
-				</ion-card-content>
-			</ion-card>
+						<button @click="download()" class="buttoni xl">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+							</svg>
+							Export
+						</button>
+					</ion-card-content>
+				</ion-card>
+			</div>
 		</div>
 	</div>
 </template>
@@ -60,6 +72,10 @@ export default {
 			let import_div = document.querySelector("#import")
 			let export_div = document.querySelector("#export")
 
+			if (window.navigator.vibrate) {
+				window.navigator.vibrate(25)
+			}
+
 			if (event === "import") {
 				import_div.style.display = "block"
 				export_div.style.display = "none"
@@ -71,7 +87,7 @@ export default {
 
 		loadFile(event) {
 			const FileSaver = require("file-saver")
-			const QrcodeDecoder = require("../../node_modules/qrcode-decoder/dist/index.js")
+			const QrcodeDecoder = require("qrcode-decoder").default
 
 			const arr = event.target.files
 
@@ -123,9 +139,7 @@ export default {
 									let str = ""
 
 									for (let j = 0; j < names.length; j++) {
-										const substr = `\nName:   ${names[j].trim()} \nSecret: ${secrets[j].trim()} \nIssuer: ${issuers[
-											j
-										].trim()} \nType:   OTP_TOTP\n`
+										const substr = `\nName:   ${names[j].trim()} \nSecret: ${secrets[j].trim()} \nIssuer: ${issuers[j].trim()} \nType:   OTP_TOTP\n`
 
 										str += substr
 									}
@@ -195,9 +209,7 @@ export default {
 							let str = ""
 
 							for (let i = 0; i < names.length; i++) {
-								let substr = `\nName:   ${names[i].trim()} \nSecret: ${secrets[i].trim()} \nIssuer: ${issuers[
-									i
-								].trim()} \nType:   OTP_TOTP\n`
+								let substr = `\nName:   ${names[i].trim()} \nSecret: ${secrets[i].trim()} \nIssuer: ${issuers[i].trim()} \nType:   OTP_TOTP\n`
 
 								str += substr
 							}
@@ -279,9 +291,7 @@ export default {
 							let str = ""
 
 							for (let i = 0; i < names.length; i++) {
-								let substr = `\nName:   ${names[i].trim()} \nSecret: ${secrets[i].trim()} \nIssuer: ${issuers[
-									i
-								].trim()} \nType:   OTP_TOTP\n`
+								let substr = `\nName:   ${names[i].trim()} \nSecret: ${secrets[i].trim()} \nIssuer: ${issuers[i].trim()} \nType:   OTP_TOTP\n`
 
 								str += substr
 							}
@@ -365,6 +375,10 @@ export default {
 	display: none;
 }
 
+.xl {
+	margin-top: 15px;
+}
+
 #select {
 	background: #141414;
 	position: relative;
@@ -418,10 +432,6 @@ input[type="file"] {
 
 	.download {
 		width: 200px !important;
-	}
-
-	#container {
-		margin-bottom: 250px;
 	}
 }
 </style>

@@ -5,10 +5,10 @@
 				<ion-title>Advanced</ion-title>
 			</ion-toolbar>
 		</ion-header>
-		<ion-content :fullscreen="true">
+		<ion-content>
 			<ion-header collapse="condense">
 				<ion-toolbar>
-					<ion-title size="large">Tab 4</ion-title>
+					<ion-title size="large">Advanced</ion-title>
 				</ion-toolbar>
 			</ion-header>
 
