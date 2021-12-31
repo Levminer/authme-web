@@ -1,7 +1,7 @@
 {
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"name": "authme-web",
-	"date": "2021. October 26.",
+	"date": "2022. January 4.",
 	"description": "Web app for Authme the cross-platform two-factor authentication app.",
 	"author": "Levminer",
 	"license": "GPL-3.0",
@@ -23,7 +23,7 @@
 		"file-saver": "^2.0.5",
 		"qrcode-decoder": "^0.2.2",
 		"register-service-worker": "^1.7.1",
-		"simple-crypto-js": "^3.0.0",
+		"simple-crypto-js": "^3.0.1",
 		"vue": "^3.0.0-0",
 		"vue-router": "^4.0.12"
 	},

@@ -18,7 +18,7 @@
 						</ion-card-title>
 					</ion-card-header>
 					<ion-card-content>
-						<h3>You can import from QR code(s) here. For more information check out the documentation.</h3>
+						<h3>You can import from 2FA QR codes here.</h3>
 
 						<button @click="upload()" class="buttoni xl">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,7 +37,7 @@
 						</ion-card-title>
 					</ion-card-header>
 					<ion-card-content>
-						<h3>You can export your 2FA code(s) if you saved them on the Codes tab. For more information check out the documentation.</h3>
+						<h3>You can export your 2FA codes if you saved them on the Codes tab.</h3>
 
 						<button @click="download()" class="buttoni xl">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -144,9 +144,21 @@ export default {
 										str += substr
 									}
 
-									const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
+									const codes = {
+										role: "export",
+										encrypted: false,
+										codes: Buffer.from(str).toString("base64"),
+										date: new Date()
+											.toISOString()
+											.replace("T", "-")
+											.replaceAll(":", "-")
+											.substring(0, 19),
+										version: 3,
+									}
 
-									FileSaver.saveAs(blob, "authme_web_import.txt")
+									const blob = new Blob([JSON.stringify(codes, null, "\t")], { type: "text/plain;charset=utf-8" })
+
+									FileSaver.saveAs(blob, "import.authme")
 								}, 500)
 							}
 						} else {
@@ -193,7 +205,7 @@ export default {
 		async exportNoPass() {
 			const alert = await alertController.create({
 				header: "Authme Web",
-				message: `QR code(s) exported sucesfully! <br><br> A download window will open after you closed this! <br><br>You can import the exported codes in Authme and Authme Web!`,
+				message: `QR code(s) exported successfully! <br><br> A download window will open after you closed this! <br><br>You can import the exported codes in Authme and Authme Web!`,
 				backdropDismiss: false,
 				buttons: [
 					{
@@ -214,9 +226,21 @@ export default {
 								str += substr
 							}
 
-							const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
+							const codes = {
+								role: "export",
+								encrypted: false,
+								codes: Buffer.from(str).toString("base64"),
+								date: new Date()
+									.toISOString()
+									.replace("T", "-")
+									.replaceAll(":", "-")
+									.substring(0, 19),
+								version: 3,
+							}
 
-							FileSaver.saveAs(blob, "authme_web_export.txt")
+							const blob = new Blob([JSON.stringify(codes, null, "\t")], { type: "text/plain;charset=utf-8" })
+
+							FileSaver.saveAs(blob, "export.authme")
 						},
 					},
 				],
@@ -269,12 +293,12 @@ export default {
 								})
 								alert0.present()
 
-								return console.warn(`Authme Web - Worong password - ${error}`)
+								return console.warn(`Authme Web - Wrong password - ${error}`)
 							}
 
 							const alert1 = await alertController.create({
 								header: "Authme Web",
-								message: `QR code(s) exported sucesfully! <br><br> A download window will open shortly! <br><br>You can import the exported codes in Authme and Authme Web!`,
+								message: `QR code(s) exported successfully! <br><br> A download window will open shortly! <br><br>You can import the exported codes in Authme and Authme Web!`,
 								backdropDismiss: false,
 								buttons: [
 									{
@@ -296,9 +320,21 @@ export default {
 								str += substr
 							}
 
-							const blob = new Blob([str], { type: "text/plain;charset=utf-8" })
+							const codes = {
+								role: "export",
+								encrypted: false,
+								codes: Buffer.from(str).toString("base64"),
+								date: new Date()
+									.toISOString()
+									.replace("T", "-")
+									.replaceAll(":", "-")
+									.substring(0, 19),
+								version: 3,
+							}
 
-							FileSaver.saveAs(blob, "authme_web_export.txt")
+							const blob = new Blob([JSON.stringify(codes, null, "\t")], { type: "text/plain;charset=utf-8" })
+
+							FileSaver.saveAs(blob, "export.authme")
 						},
 					},
 					{
@@ -316,7 +352,7 @@ export default {
 		async downloadAlert() {
 			const alert = await alertController.create({
 				header: "Authme Web",
-				message: `QR code(s) processed sucesfully! <br><br> A download window will open shortly! <br><br>You can import your codes now on the codes tab!`,
+				message: `QR code(s) processed successfully! <br><br> A download window will open shortly! <br><br>You can import your codes now on the codes tab!`,
 				backdropDismiss: false,
 				buttons: [
 					{
