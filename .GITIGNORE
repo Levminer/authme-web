@@ -27,7 +27,7 @@ npm-debug.log*
 /plugins
 /www
 
-android
-ios
+/android
+/ios
 
 .vercel
