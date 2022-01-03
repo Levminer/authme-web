@@ -6,9 +6,9 @@
 
 ## Import
 
--   If you just want to test: Download this sample import file, unzip it and upload it: [Download](https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true)
+-   If you just want to test: Download this sample import file, unzip it and import it: [Download](https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true)
 
--   Option 1: You can import your QR codes on the Advanced tab: [Authme Web](https://web.authme.levminer.com)
+-   Option 1: You can import your QR codes on the Tools tab: [Import](https://web.authme.levminer.com/tools)
 
 -   Option 2: You need to export your codes from: [Authme](https://github.com/Levminer/authme)
 
