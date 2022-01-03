@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
 	<div id="container">
 		<ion-card>
@@ -20,12 +21,14 @@
 						Choose file
 					</button>
 					<input type="file" class="file" id="file" @change="load" accept=".authme" />
-					<button class="buttoni buttons" @click="advanced">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-						</svg>
-						Create file
-					</button>
+					<routerLink to="/tools">
+						<button class="buttoni buttons" @click="advanced">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+							</svg>
+							Create file
+						</button>
+					</routerLink>
 					<br />
 					<h3 class="m">
 						Read the import guide or download a sample file to try out Authme Web.
@@ -98,6 +101,7 @@
 <script>
 /* eslint-disable */
 import { alertController } from "@ionic/vue"
+
 export default {
 	async mounted() {
 		const speakeasy = require("@levminer/speakeasy")
@@ -441,10 +445,6 @@ export default {
 		input() {
 			//? open input window
 			document.getElementById("file").click()
-		},
-
-		advanced() {
-			location.replace("/advanced")
 		},
 
 		load(event) {
