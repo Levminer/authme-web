@@ -7,9 +7,9 @@
 					<ion-label>Codes</ion-label>
 				</ion-tab-button>
 
-				<ion-tab-button tab="tab4" href="/advanced">
+				<ion-tab-button tab="tab4" href="/tools">
 					<ion-icon :icon="apps" />
-					<ion-label>Advanced</ion-label>
+					<ion-label>Tools</ion-label>
 				</ion-tab-button>
 
 				<ion-tab-button tab="tab2" href="/settings">

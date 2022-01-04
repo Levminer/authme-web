@@ -19,7 +19,7 @@ const routes = [
 				component: () => import("@/views/Tab2.vue"),
 			},
 			{
-				path: "advanced",
+				path: "tools",
 				component: () => import("@/views/Tab4.vue"),
 			},
 		],

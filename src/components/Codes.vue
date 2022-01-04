@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
 	<div id="container">
 		<ion-card>
@@ -19,13 +20,15 @@
 						</svg>
 						Choose file
 					</button>
-					<input type="file" class="file" id="file" @change="load" accept=".txt" />
-					<button class="buttoni buttons" @click="advanced">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-						</svg>
-						Create file
-					</button>
+					<input type="file" class="file" id="file" @change="load" accept=".authme" />
+					<routerLink to="/tools">
+						<button class="buttoni buttons" @click="advanced">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+							</svg>
+							Create file
+						</button>
+					</routerLink>
 					<br />
 					<h3 class="m">
 						Read the import guide or download a sample file to try out Authme Web.
@@ -98,6 +101,7 @@
 <script>
 /* eslint-disable */
 import { alertController } from "@ionic/vue"
+
 export default {
 	async mounted() {
 		const speakeasy = require("@levminer/speakeasy")
@@ -286,7 +290,7 @@ export default {
 		},
 
 		sample() {
-			window.open("https://github.com/Levminer/authme/blob/main/sample/authme_import_sample.zip?raw=true", "_blank")
+			window.open("https://github.com/Levminer/authme/raw/dev/samples/authme/authme_import_sample.zip", "_blank")
 		},
 
 		search(event) {
@@ -357,7 +361,7 @@ export default {
 
 			const dialog = await alertController.create({
 				header: "Authme Web",
-				message: `Do you want to create a password to protect the code(s)? <br><br> You're code(s) can't be accesible outside the browser anyway.`,
+				message: `Do you want to create a password to protect the code(s)? <br><br> You're code(s) can't be accessed outside the browser anyway.`,
 				backdropDismiss: false,
 				buttons: [
 					{
@@ -374,9 +378,9 @@ export default {
 								let set_info = document.querySelector("#set_info")
 
 								if (input1.length < 8) {
-									set_info.textContent = "Minimum password length is 8 charachters!"
+									set_info.textContent = "Minimum password length is 8 characters!"
 								} else if (input1.length > 64) {
-									set_info.textContent = "Maximum password length is 64 charachters!"
+									set_info.textContent = "Maximum password length is 64 characters!"
 								} else {
 									if (input1 === input2) {
 										set_info.textContent = "Passwords match! Please wait..."
@@ -441,10 +445,6 @@ export default {
 		input() {
 			//? open input window
 			document.getElementById("file").click()
-		},
-
-		advanced() {
-			location.replace("/advanced")
 		},
 
 		load(event) {
@@ -591,7 +591,7 @@ export default {
 			const type = []
 			const querry = []
 
-			// ? separete value
+			// ? separate value
 			const separation = () => {
 				let c0 = 0
 				let c1 = 1
@@ -635,8 +635,12 @@ export default {
 			}
 
 			const processdata = (text) => {
-				// remove double qoutes
-				const pre_data1 = text.replace(/"/g, "")
+				const json = JSON.parse(text)
+
+				const codes = Buffer.from(json.codes, "base64").toString()
+
+				// remove double quotes
+				const pre_data1 = codes.replace(/"/g, "")
 
 				// new line
 				const pre_data2 = pre_data1.replace(/,/g, "\n")
