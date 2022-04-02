@@ -5,16 +5,6 @@
 			<ion-card>
 				<ion-card-header>
 					<ion-card-title>
-						<h1>Authme Web</h1>
-					</ion-card-title>
-				</ion-card-header>
-				<ion-card-content>
-					<h2>Settings</h2>
-				</ion-card-content>
-			</ion-card>
-			<ion-card>
-				<ion-card-header>
-					<ion-card-title>
 						<h2 id="name">Clear data</h2>
 					</ion-card-title>
 				</ion-card-header>
@@ -44,7 +34,7 @@
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 						</svg>
-						View licenses
+						Licenses
 					</button>
 				</ion-card-content>
 			</ion-card>
@@ -62,7 +52,7 @@
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 						</svg>
-						About
+						Version
 					</button>
 				</ion-card-content>
 			</ion-card>

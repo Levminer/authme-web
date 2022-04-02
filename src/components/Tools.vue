@@ -21,10 +21,14 @@
 						<h3>You can import from 2FA QR codes here.</h3>
 
 						<button @click="upload()" class="buttoni xl">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<line x1="15" y1="8" x2="15.01" y2="8"></line>
+								<rect x="4" y="4" width="16" height="16" rx="3"></rect>
+								<path d="M4 15l4 -4a3 5 0 0 1 3 0l5 5"></path>
+								<path d="M14 14l1 -1a3 5 0 0 1 3 0l2 2"></path>
 							</svg>
-							Import
+							Choose images
 						</button>
 						<input type="file" accept=".jpg, .jpeg, .png, .bmp" name="image" id="upload" @change="loadFile($event)" multiple />
 					</ion-card-content>
@@ -37,13 +41,13 @@
 						</ion-card-title>
 					</ion-card-header>
 					<ion-card-content>
-						<h3>You can export your 2FA codes if you saved them on the Codes tab.</h3>
+						<h3>You can export your 2FA codes if you saved them.</h3>
 
 						<button @click="download()" class="buttoni xl">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 							</svg>
-							Export
+							Confirm
 						</button>
 					</ion-card-content>
 				</ion-card>
