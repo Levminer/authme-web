@@ -96,6 +96,16 @@
 				</div>
 			</ion-card-content>
 		</ion-card>
+
+		<ion-card class="searchResults">
+			<ion-card-title>
+				<h2>No results found!</h2>
+			</ion-card-title>
+
+			<ion-card-content>
+				<h3 class="searchResult">Not found search results.</h3>
+			</ion-card-content>
+		</ion-card>
 		<div class="next container"></div>
 	</div>
 </template>
@@ -149,15 +159,15 @@ export default {
 						document.querySelector(".next").appendChild(element)
 
 						// copy
-						let copybtn = document.querySelector(`#copy${i}`)
+						let copy_button = document.querySelector(`#copy${i}`)
 
-						copybtn.addEventListener("click", () => {
-							let codeinp = document.querySelector(`#code${i}`).value
+						copy_button.addEventListener("click", () => {
+							let code_input = document.querySelector(`#code${i}`).value
 
 							window.navigator.vibrate(15)
 
-							clipboard.writeText(codeinp)
-							copybtn.innerHTML = `
+							clipboard.writeText(code_input)
+							copy_button.innerHTML = `
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
 							</svg>
@@ -165,7 +175,7 @@ export default {
 							`
 
 							setTimeout(() => {
-								copybtn.innerHTML = `
+								copy_button.innerHTML = `
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
 								</svg>
@@ -297,7 +307,18 @@ export default {
 
 		search(event) {
 			// ? search
-			const querry = JSON.parse(localStorage.getItem("querry"))
+
+			try {
+				const old_query = JSON.parse(localStorage.getItem("querry"))
+				if (old_query != null) {
+					localStorage.setItem("query", JSON.stringify(old_query))
+				}
+			} catch (error) {
+				console.log("Not found old query")
+			}
+
+			const query = JSON.parse(localStorage.getItem("query"))
+			let no_results = 0
 
 			let search = document.querySelector("#search")
 			let input = search.value.toLowerCase()
@@ -305,20 +326,27 @@ export default {
 			let i = 0
 
 			// get all elements
-			for (let i = 0; i < querry.length; i++) {
+			for (let i = 0; i < query.length; i++) {
 				const div = document.querySelector(`#card${[i]}`)
 				div.style.display = "block"
+				document.querySelector(".searchResults").style.display = "none"
 			}
 
 			// search
-			querry.forEach((e) => {
+			query.forEach((e) => {
 				if (e.startsWith(input)) {
 				} else {
 					const card = document.querySelector(`#card${[i]}`)
 					card.style.display = "none"
+					no_results++
 				}
 				i++
 			})
+
+			if (query.length === no_results) {
+				document.querySelector(".searchResults").style.display = "block"
+				document.querySelector(".searchResult").textContent = `Not found search results for "${document.querySelector("#search").value}".`
+			}
 		},
 
 		async save() {
@@ -490,15 +518,15 @@ export default {
 						document.querySelector(".next").appendChild(element)
 
 						// copy
-						let copybtn = document.querySelector(`#copy${i}`)
+						let copy_button = document.querySelector(`#copy${i}`)
 
-						copybtn.addEventListener("click", () => {
-							let codeinp = document.querySelector(`#code${i}`).value
+						copy_button.addEventListener("click", () => {
+							let code_input = document.querySelector(`#code${i}`).value
 
 							window.navigator.vibrate(15)
 
-							clipboard.writeText(codeinp)
-							copybtn.innerHTML = `
+							clipboard.writeText(code_input)
+							copy_button.innerHTML = `
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
 							</svg>
@@ -506,7 +534,7 @@ export default {
 							`
 
 							setTimeout(() => {
-								copybtn.innerHTML = `
+								copy_button.innerHTML = `
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
 								</svg>
@@ -525,7 +553,8 @@ export default {
 						// add to query
 						const item = issuer[i].toLowerCase().trim()
 
-						querry.push(item)
+						console.log(item)
+						query.push(item)
 
 						// interval0
 						const int0 = setInterval(() => {
@@ -583,7 +612,7 @@ export default {
 
 				generate()
 
-				localStorage.setItem("querry", JSON.stringify(querry))
+				localStorage.setItem("query", JSON.stringify(query))
 			}
 
 			// ? read file from settings folder
@@ -591,7 +620,7 @@ export default {
 			const secret = []
 			const issuer = []
 			const type = []
-			const querry = []
+			const query = []
 
 			// ? separate value
 			const separation = () => {
@@ -690,13 +719,18 @@ export default {
 </script>
 
 <style scoped>
+.searchResults {
+	display: none;
+	padding: 2rem;
+}
+
 .confirm {
 	display: none;
 }
 
 #search {
 	width: 50%;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 600px) {

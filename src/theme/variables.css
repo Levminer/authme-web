@@ -318,6 +318,7 @@ ion-button {
 }
 
 .sm {
+	margin-bottom: 20px;
 	width: 10rem !important;
 }
 
