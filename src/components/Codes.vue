@@ -4,7 +4,7 @@
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
-					<h1 id="name">Authme Web</h1>
+					<h2 id="name">Authme Web</h2>
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>

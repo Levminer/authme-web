@@ -14,7 +14,7 @@
 				<ion-card id="import" class="tab">
 					<ion-card-header>
 						<ion-card-title>
-							<h1>Import</h1>
+							<h2>Import</h2>
 						</ion-card-title>
 					</ion-card-header>
 					<ion-card-content>
@@ -37,7 +37,7 @@
 				<ion-card id="export" class="tab">
 					<ion-card-header>
 						<ion-card-title>
-							<h1>Export</h1>
+							<h2>Export</h2>
 						</ion-card-title>
 					</ion-card-header>
 					<ion-card-content>
@@ -416,7 +416,8 @@ export default {
 }
 
 .xl {
-	margin-top: 15px;
+	margin-top: 30px;
+	margin-bottom: 15px;
 }
 
 #select {
