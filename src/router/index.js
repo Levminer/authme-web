@@ -32,10 +32,17 @@ const router = createRouter({
 	routes,
 })
 
+let load = false
 router.beforeResolve(() => {
-	if (window.navigator.vibrate) {
-		window.navigator.vibrate(25)
+	if (load === true) {
+		try {
+			window.navigator.vibrate(25)
+		} catch (error) {
+			console.log("Vibrate off", error)
+		}
 	}
+
+	load = true
 })
 
 export default router

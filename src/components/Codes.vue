@@ -4,23 +4,15 @@
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>
-					<h1 id="name">Authme Web</h1>
+					<h2 id="name">Authme Web</h2>
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
 				<div class="before">
 					<h3>
-						Please choose your import file! <br />
-						If you don't have an import file please create one!
+						Import your 2FA codes, or if you have an import file choose it.
 					</h3>
 					<br />
-					<button @click="input" class="import buttoni buttons">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
-						</svg>
-						Choose file
-					</button>
-					<input type="file" class="file" id="file" @change="load" accept=".authme" />
 					<routerLink to="/tools">
 						<button class="buttoni buttons" @click="advanced">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -29,15 +21,22 @@
 							Create file
 						</button>
 					</routerLink>
+					<button @click="input" class="import buttoni buttons">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+						</svg>
+						Choose file
+					</button>
+					<input type="file" class="file" id="file" @change="load" accept=".authme" />
 					<br />
 					<h3 class="m">
 						Read the import guide or download a sample file to try out Authme Web.
 					</h3>
 					<button @click="guide" class="buttoni buttons">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
 						</svg>
-						Import guide
+						Help
 					</button>
 					<button @click="sample" class="buttoni buttons">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,8 +64,11 @@
 
 			<ion-card-content>
 				<button @click="save" class="buttoni">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+						<circle cx="12" cy="14" r="2"></circle>
+						<polyline points="14 4 14 8 8 8 8 4"></polyline>
 					</svg>
 					Save
 				</button>
@@ -84,14 +86,24 @@
 					<input class="input1 m" id="input2" type="password" placeholder="Password" />
 					<br />
 					<button id="set_button" class="buttoni save m">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 						</svg>
 						Confirm
 					</button>
 
 					<h4 id="set_info">Press the button to confirm!</h4>
 				</div>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card class="searchResults">
+			<ion-card-title>
+				<h2>No results found!</h2>
+			</ion-card-title>
+
+			<ion-card-content>
+				<h3 class="searchResult">Not found search results.</h3>
 			</ion-card-content>
 		</ion-card>
 		<div class="next container"></div>
@@ -147,15 +159,15 @@ export default {
 						document.querySelector(".next").appendChild(element)
 
 						// copy
-						let copybtn = document.querySelector(`#copy${i}`)
+						let copy_button = document.querySelector(`#copy${i}`)
 
-						copybtn.addEventListener("click", () => {
-							let codeinp = document.querySelector(`#code${i}`).value
+						copy_button.addEventListener("click", () => {
+							let code_input = document.querySelector(`#code${i}`).value
 
 							window.navigator.vibrate(15)
 
-							clipboard.writeText(codeinp)
-							copybtn.innerHTML = `
+							clipboard.writeText(code_input)
+							copy_button.innerHTML = `
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
 							</svg>
@@ -163,7 +175,7 @@ export default {
 							`
 
 							setTimeout(() => {
-								copybtn.innerHTML = `
+								copy_button.innerHTML = `
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
 								</svg>
@@ -295,7 +307,18 @@ export default {
 
 		search(event) {
 			// ? search
-			const querry = JSON.parse(localStorage.getItem("querry"))
+
+			try {
+				const old_query = JSON.parse(localStorage.getItem("querry"))
+				if (old_query != null) {
+					localStorage.setItem("query", JSON.stringify(old_query))
+				}
+			} catch (error) {
+				console.log("Not found old query")
+			}
+
+			const query = JSON.parse(localStorage.getItem("query"))
+			let no_results = 0
 
 			let search = document.querySelector("#search")
 			let input = search.value.toLowerCase()
@@ -303,20 +326,27 @@ export default {
 			let i = 0
 
 			// get all elements
-			for (let i = 0; i < querry.length; i++) {
+			for (let i = 0; i < query.length; i++) {
 				const div = document.querySelector(`#card${[i]}`)
 				div.style.display = "block"
+				document.querySelector(".searchResults").style.display = "none"
 			}
 
 			// search
-			querry.forEach((e) => {
+			query.forEach((e) => {
 				if (e.startsWith(input)) {
 				} else {
 					const card = document.querySelector(`#card${[i]}`)
 					card.style.display = "none"
+					no_results++
 				}
 				i++
 			})
+
+			if (query.length === no_results) {
+				document.querySelector(".searchResults").style.display = "block"
+				document.querySelector(".searchResult").textContent = `Not found search results for "${document.querySelector("#search").value}".`
+			}
 		},
 
 		async save() {
@@ -488,15 +518,15 @@ export default {
 						document.querySelector(".next").appendChild(element)
 
 						// copy
-						let copybtn = document.querySelector(`#copy${i}`)
+						let copy_button = document.querySelector(`#copy${i}`)
 
-						copybtn.addEventListener("click", () => {
-							let codeinp = document.querySelector(`#code${i}`).value
+						copy_button.addEventListener("click", () => {
+							let code_input = document.querySelector(`#code${i}`).value
 
 							window.navigator.vibrate(15)
 
-							clipboard.writeText(codeinp)
-							copybtn.innerHTML = `
+							clipboard.writeText(code_input)
+							copy_button.innerHTML = `
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
 							</svg>
@@ -504,7 +534,7 @@ export default {
 							`
 
 							setTimeout(() => {
-								copybtn.innerHTML = `
+								copy_button.innerHTML = `
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
 								</svg>
@@ -523,7 +553,8 @@ export default {
 						// add to query
 						const item = issuer[i].toLowerCase().trim()
 
-						querry.push(item)
+						console.log(item)
+						query.push(item)
 
 						// interval0
 						const int0 = setInterval(() => {
@@ -581,7 +612,7 @@ export default {
 
 				generate()
 
-				localStorage.setItem("querry", JSON.stringify(querry))
+				localStorage.setItem("query", JSON.stringify(query))
 			}
 
 			// ? read file from settings folder
@@ -589,7 +620,7 @@ export default {
 			const secret = []
 			const issuer = []
 			const type = []
-			const querry = []
+			const query = []
 
 			// ? separate value
 			const separation = () => {
@@ -688,13 +719,18 @@ export default {
 </script>
 
 <style scoped>
+.searchResults {
+	display: none;
+	padding: 2rem;
+}
+
 .confirm {
 	display: none;
 }
 
 #search {
 	width: 50%;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 600px) {
