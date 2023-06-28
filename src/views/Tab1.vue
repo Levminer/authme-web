@@ -1,6 +1,9 @@
 <template>
 	<ion-page>
 		<ion-header>
+			<div class="alert">
+				<p>Authme Web is deprecated, please export your codes until July 1.</p>
+			</div>
 			<ion-toolbar>
 				<ion-title>Codes</ion-title>
 			</ion-toolbar>
@@ -34,3 +37,13 @@ export default {
 	},
 }
 </script>
+
+<style>
+.alert {
+	font-size: 2em;
+	background-color: red;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px;
+}
+</style>
